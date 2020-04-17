@@ -9,7 +9,7 @@ class NavBar extends PureComponent {
         <div className="uk-container uk-container-small">
           <nav id="navbar" data-uk-navbar={{ mode: 'click' }}>
             <div className="uk-navbar-left">
-              <a className="uk-navbar-item uk-logo" href="/"><img src={require('../images/photogram.png')} alt="Logo" style={{ width: '180px', height: '40px' }} /></a>
+              <a className="uk-navbar-item uk-logo" href="/"><img src={require('../images/logo.png')} alt="Logo" style={{ width: '60px', height: '60px' }} /></a>
             </div>
             <div className="uk-navbar-right">
               <ul className="uk-navbar-nav">

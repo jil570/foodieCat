@@ -3,9 +3,9 @@
 import React, { Component } from 'react';
 import { rgba } from 'polished';
 import { login } from '../javascripts/authRequests';
+import '../stylesheets/auth-pages-style.css';
 import image from '../images/slide-5.jpg';
-import '../stylesheets/auth-pages.css';
-import logo from '../images/photogram.png';
+import logo from '../images/logo.png';
 
 class Login extends Component {
   constructor(props) {

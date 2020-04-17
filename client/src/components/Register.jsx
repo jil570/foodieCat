@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { rgba } from 'polished';
 import { register } from '../javascripts/authRequests';
 import slideImage from '../images/slide-1.jpg';
-import logo from '../images/photogram.png';
+import logo from '../images/logo.png';
 
 class Register extends Component {
   constructor(props) {
