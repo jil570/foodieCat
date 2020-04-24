@@ -2,15 +2,15 @@
 
 import { api } from '../api';
 
-async function register(firstName, lastName, email, password, username, address, image = null) {
+async function register(firstName, lastName, email, password, username, image = null, address) {
   const formData = new FormData();
   formData.append('firstName', firstName);
   formData.append('lastName', lastName);
   formData.append('email', email);
   formData.append('password', password);
   formData.append('username', username);
-  formData.append('address', address);
   formData.append('image', image);
+  formData.append('address', address);
 
   return fetch(`${api.url}/register`,
     {

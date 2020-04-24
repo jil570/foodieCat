@@ -42,6 +42,10 @@ const UserSchema = new mongoose.Schema({
     type: Buffer,
     required: false,
   },
+  address:{
+    type: String,
+    required: true,
+  }
 });
 
 const User = mongoose.model('User', UserSchema);

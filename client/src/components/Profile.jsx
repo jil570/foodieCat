@@ -61,23 +61,16 @@ class Profile extends Component {
                 <ul className="uk-margin-remove" style={{ padding: '0px', listStyleType: 'none' }}>
                   <li className="uk-text-bold uk-margin-bottom uk-margin-right uk-float-left">
                     <span id="posts" className="uk-text-light">
-                      posts:
+                      Address:
                       {' '}
-                      {/* {data.posts.length} */}
+                      {data.address}
                     </span>
                   </li>
                   <li className="uk-text-bold uk-margin-bottom uk-margin-left uk-margin-right uk-float-left">
                     <span id="followers" className="uk-text-light">
-                      followers:
+                      Category:
                       {' '}
                       {/* <a href="/follower">{data.followers.length}</a> */}
-                    </span>
-                  </li>
-                  <li className="uk-text-bold uk-margin-bottom uk-margin-left uk-float-left">
-                    <span id="following" className="uk-text-light">
-                      following:
-                      {' '}
-                      {/* <a href="/followee">{data.followees.length}</a> */}
                     </span>
                   </li>
                 </ul>
