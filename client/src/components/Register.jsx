@@ -127,10 +127,10 @@ class Register extends Component {
                   <input onChange={this.handleChange} id="password" name="password" className="uk-input uk-border-pill" placeholder="Password" type="password" required />
                 </div>
               </div>
-              <div className="uk-margin">
-                <div className="uk-inline uk-width-1-1" uk-form-custom="target: true">
-                  <input onChange={this.handleFileChange} id="image" name="image" type="file" accept="image/*" />
-                  <input className="uk-input uk-border-pill" type="text" placeholder="Select profile image" />
+              <div className="uk-margin-small">
+                <div className="uk-inline uk-width-1-1">
+                  <span className="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: home" />
+                  <input onChange={this.handleChange} id="address" name="address" className="uk-input uk-border-pill" placeholder="Address" type="address" required />
                 </div>
               </div>
               <div className="uk-margin-bottom" style={{ textAlign: 'center' }}>

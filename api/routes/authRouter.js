@@ -28,6 +28,7 @@ router.post('/register', checkNotAuthenticated,
     const { email } = req.body;
     const { password } = req.body;
     const { username } = req.body;
+    const { address } = req.body;
     const { file } = req;
 
     if (file && !checkFileSize(file)) {
@@ -83,11 +84,8 @@ router.post('/register', checkNotAuthenticated,
                     lastName,
                     password: hashedPassword,
                     lockout: { attempts: 0, lastFailedDatetime: -1 },
+                    address,
                     image,
-                    posts: [],
-                    likes: [],
-                    followers: [],
-                    followees: [],
                   });
 
                   newUser.save()
