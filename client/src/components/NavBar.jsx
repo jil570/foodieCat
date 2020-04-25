@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 /* globals */
 import React, { PureComponent } from 'react';
+import '../stylesheets/nav-bar.css';
 
 class NavBar extends PureComponent {
   render() {
@@ -14,19 +15,29 @@ class NavBar extends PureComponent {
             <div className="uk-navbar-right">
               <ul className="uk-navbar-nav">
                 <li>
-                  <a href="/like" data-uk-icon="icon:heart"> </a>
+                  <a class="tooltip" href="/like" data-uk-icon="icon:heart">
+                      <span class="tooltiptext">Likes</span>
+                  </a>
                 </li>
                 <li>
-                  <a href="/profile" data-uk-icon="icon:user"> </a>
+                  <a class="tooltip" href="/profile" data-uk-icon="icon:user"> 
+                    <span class="tooltiptext">Profile</span>
+                  </a>
                 </li>
                 <li>
-                  <a href="/makePost" data-uk-icon="icon:image"> </a>
+                  <a class="tooltip" href="/makePost" data-uk-icon="icon:image"> 
+                    <span class="tooltiptext">Post</span>
+                  </a>
                 </li>
                 <li>
-                  <a href="/follow" data-uk-icon="icon:users"> </a>
+                  <a class="tooltip" href="/follow" data-uk-icon="icon:users"> 
+                    <span class="tooltiptext">Follow</span>
+                  </a>
                 </li>
                 <li>
-                  <a href="/login" data-uk-icon="icon:sign-out" uk-toggle="true"> </a>
+                  <a class="tooltip" href="/login" data-uk-icon="icon:sign-out" uk-toggle="true"> 
+                    <span class="tooltiptext">Log Out</span>
+                  </a>
                 </li>
               </ul>
             </div>
