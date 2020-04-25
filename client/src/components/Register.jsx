@@ -16,9 +16,11 @@ class Register extends Component {
       password: '',
       image: null,
       message: '',
-      address:'',
+      address:'unset',
       category1: 'unset',
       category2:'unset',
+      longitude:'unset',
+      latitude:'unset'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -49,6 +51,8 @@ class Register extends Component {
     const { address } = this.state;
     const { category1 } = this.state;
     const { category2 } = this.state;
+    const { longitude } = this.state;
+    const { latitude } = this.state;
 
     register(
       firstName,
@@ -60,6 +64,8 @@ class Register extends Component {
       address,
       category1,
       category2,
+      longitude,
+      latitude
     )
       .then((res) => {
         if (res.ok) {
@@ -136,12 +142,12 @@ class Register extends Component {
                   <input onChange={this.handleChange} id="password" name="password" className="uk-input uk-border-pill" placeholder="Password" type="password" required />
                 </div>
               </div>
-              <div className="uk-margin-small">
+              {/* <div className="uk-margin-small">
                 <div className="uk-inline uk-width-1-1">
                   <span className="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: home" />
                   <input onChange={this.handleChange} id="address" name="address" className="uk-input uk-border-pill" placeholder="Address" type="address" required />
                 </div>
-              </div>
+              </div> */}
               <div className="uk-margin">
                 <div className="uk-inline uk-width-1-1" uk-form-custom="target: true">
                   <input onChange={this.handleFileChange} id="image" name="image" type="file" accept="image/*" />
