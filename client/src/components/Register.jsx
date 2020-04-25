@@ -16,6 +16,9 @@ class Register extends Component {
       password: '',
       image: null,
       message: '',
+      address:'',
+      category1: 'unset',
+      category2:'unset',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,6 +46,9 @@ class Register extends Component {
     const { password } = this.state;
     const { username } = this.state;
     const { image } = this.state;
+    const { address } = this.state;
+    const { category1 } = this.state;
+    const { category2 } = this.state;
 
     register(
       firstName,
@@ -51,6 +57,9 @@ class Register extends Component {
       password,
       username,
       image,
+      address,
+      category1,
+      category2,
     )
       .then((res) => {
         if (res.ok) {
@@ -125,6 +134,12 @@ class Register extends Component {
                 <div className="uk-inline uk-width-1-1">
                   <span className="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: lock" />
                   <input onChange={this.handleChange} id="password" name="password" className="uk-input uk-border-pill" placeholder="Password" type="password" required />
+                </div>
+              </div>
+              <div className="uk-margin-small">
+                <div className="uk-inline uk-width-1-1">
+                  <span className="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: home" />
+                  <input onChange={this.handleChange} id="address" name="address" className="uk-input uk-border-pill" placeholder="Address" type="address" required />
                 </div>
               </div>
               <div className="uk-margin">
