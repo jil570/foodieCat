@@ -79,4 +79,21 @@ router.get('/getOtherUser/:username', checkAuthenticated, (req, res) => {
     .catch((err) => sendDatabaseErrorResponse(err, res));
 });
 
+router.post('/profile', checkAuthenticated, async (req, res) => {
+      const { username } = req.user;
+      const { address } = req.body;
+      const { category1 } = req.body;
+      const { category2 } = req.body;
+      console.log(category2);
+
+      User.findOneAndUpdate(
+        { username },
+        { $set: { 'address': address, 'category1': category1, 'category2': category2 } },
+      )
+        .then(() => {
+          res.sendStatus(200);
+        })
+        .catch((err) => sendDatabaseErrorResponse(err, res));
+    });
+
 module.exports = router;

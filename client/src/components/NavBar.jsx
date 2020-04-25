@@ -20,7 +20,7 @@ class NavBar extends PureComponent {
                   <a href="/profile" data-uk-icon="icon:user"> </a>
                 </li>
                 <li>
-                  <a href="/makePost" data-uk-icon="icon:image"> </a>
+                  <a href="/editinfo" data-uk-icon="icon:image"> </a>
                 </li>
                 <li>
                   <a href="/follow" data-uk-icon="icon:users"> </a>

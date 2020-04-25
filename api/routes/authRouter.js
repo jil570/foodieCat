@@ -29,6 +29,8 @@ router.post('/register', checkNotAuthenticated,
     const { password } = req.body;
     const { username } = req.body;
     const { address } = req.body;
+    const { category1 } = req.body;
+    const { category2 } = req.body;
     const { file } = req;
 
     if (file && !checkFileSize(file)) {
@@ -86,6 +88,8 @@ router.post('/register', checkNotAuthenticated,
                     lockout: { attempts: 0, lastFailedDatetime: -1 },
                     address,
                     image,
+                    category1,
+                    category2,
                   });
 
                   newUser.save()

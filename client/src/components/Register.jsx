@@ -17,6 +17,8 @@ class Register extends Component {
       image: null,
       message: '',
       address:'',
+      category1: 'unset',
+      category2:'unset',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -45,6 +47,8 @@ class Register extends Component {
     const { username } = this.state;
     const { image } = this.state;
     const { address } = this.state;
+    const { category1 } = this.state;
+    const { category2 } = this.state;
 
     register(
       firstName,
@@ -54,6 +58,8 @@ class Register extends Component {
       username,
       image,
       address,
+      category1,
+      category2,
     )
       .then((res) => {
         if (res.ok) {

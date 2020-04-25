@@ -45,7 +45,15 @@ const UserSchema = new mongoose.Schema({
   address:{
     type: String,
     required: true,
-  }
+  },
+  category1:{
+    type: String,
+    required: true,
+  },
+  category2:{
+    type: String,
+    required: true,
+  },
 });
 
 const User = mongoose.model('User', UserSchema);
