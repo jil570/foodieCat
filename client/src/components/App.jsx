@@ -21,7 +21,7 @@ class App extends PureComponent {
           <Route exact path="/register" component={RouteVerifier(Register)} />
           <Route exact path="/editinfo" component={RouteProtector(EditInfo)} />
           <Route exact path="/" component={RouteProtector(Profile)} />
-          <Route exact path="/homepage" component={RouteVerifier(HomePage)} />
+          <Route exact path="/homepage" component={RouteProtector(HomePage)} />
         </div>
       </Router>
     );

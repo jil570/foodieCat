@@ -6,7 +6,7 @@ import '../stylesheets/nav-bar.css';
 class NavBar extends PureComponent {
   render() {
     return (
-      <header className="uk-margin-medium-bottom" style={{ backgroundColor: '#fff', borderBottom: '1px solid #dbdbdb' }} data-uk-sticky={{ 'show-on-up': 'true', animation: 'uk-animation-fade' }}>
+      <header className="uk-margin-small-bottom" style={{ backgroundColor: '#fff', borderBottom: '1px solid #dbdbdb' }} data-uk-sticky={{ 'show-on-up': 'true', animation: 'uk-animation-fade' }}>
         <div className="uk-container uk-container-small">
           <nav id="navbar" data-uk-navbar={{ mode: 'click' }}>
             <div className="uk-navbar-left">
