@@ -12,6 +12,8 @@ class EditInfo extends Component {
       address: '',
       category1: '' ,
       category2: '',
+      longitude:'unset',
+      latitude:'unset',
       message: '',
     };
 
@@ -45,10 +47,6 @@ class EditInfo extends Component {
         message,
     } = this.state;
 
-    console.log(address);
-    console.log(category2);
-    console.log(category1);
-
     if(address == ""
       || category1 == "" 
       || category2 == ""){
@@ -73,7 +71,7 @@ class EditInfo extends Component {
               }
             })
             .catch(() => {
-              this.setState({ message: '[!]' });
+              this.props.history.push('/');
             });
         }
 

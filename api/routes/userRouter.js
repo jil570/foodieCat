@@ -84,11 +84,12 @@ router.post('/profile', checkAuthenticated, async (req, res) => {
       const { address } = req.body;
       const { category1 } = req.body;
       const { category2 } = req.body;
-      console.log(category2);
+      const { longitude } = req.body;
+      const { latitude } = req.body;
 
-      User.findOneAndUpdate(
+    User.findOneAndUpdate(
         { username },
-        { $set: { 'address': address, 'category1': category1, 'category2': category2 } },
+        { $set: { 'address': address, 'category1': category1, 'category2': category2 , 'longitude': longitude, 'latitude': latitude } },
       )
         .then(() => {
           res.sendStatus(200);
