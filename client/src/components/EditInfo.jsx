@@ -71,6 +71,8 @@ class EditInfo extends Component {
               }
             })
             .catch(() => {
+              alert("Updating");
+              setTimeout(function(){ alert("Updated");}, 3000);
               this.props.history.push('/');
             });
         }
