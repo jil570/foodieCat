@@ -15,28 +15,28 @@ class NavBar extends PureComponent {
             <div className="uk-navbar-right">
               <ul className="uk-navbar-nav">
                 <li>
-                  <a class="tooltip" href="/like" data-uk-icon="icon:heart">
-                      <span class="tooltiptext">Likes</span>
+                  <a className="tooltip" href="/like" data-uk-icon="icon:heart">
+                      <span className="tooltiptext">Likes</span>
                   </a>
                 </li>
                 <li>
-                  <a class="tooltip" href="/profile" data-uk-icon="icon:user"> 
-                    <span class="tooltiptext">Profile</span>
+                  <a className="tooltip" href="/profile" data-uk-icon="icon:user"> 
+                    <span className="tooltiptext">Profile</span>
                   </a>
                 </li>
                 <li>
-                  <a class="tooltip" href="/editinfo" data-uk-icon="icon:image"> 
-                    <span class="tooltiptext">Edit Profile</span>
+                  <a className="tooltip" href="/editinfo" data-uk-icon="icon:image"> 
+                    <span className="tooltiptext">Edit Profile</span>
                   </a>
                 </li>
                 <li>
-                  <a class="tooltip" href="/friend" data-uk-icon="icon:users"> 
-                    <span class="tooltiptext">Friend</span>
+                  <a className="tooltip" href="/follow" data-uk-icon="icon:users"> 
+                    <span className="tooltiptext">Follow</span>
                   </a>
                 </li>
                 <li>
-                  <a class="tooltip" href="/login" data-uk-icon="icon:sign-out" uk-toggle="true"> 
-                    <span class="tooltiptext">Log Out</span>
+                  <a className="tooltip" href="/login" data-uk-icon="icon:sign-out" uk-toggle="true"> 
+                    <span className="tooltiptext">Log Out</span>
                   </a>
                 </li>
               </ul>

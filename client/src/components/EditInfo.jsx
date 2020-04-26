@@ -12,6 +12,8 @@ class EditInfo extends Component {
       address: '',
       category1: '' ,
       category2: '',
+      longitude:'unset',
+      latitude:'unset',
       message: '',
     };
 
@@ -45,9 +47,17 @@ class EditInfo extends Component {
         message,
     } = this.state;
 
-    console.log(address);
-    console.log(category1);
-    console.log(category2);
+    if(address == ""
+      || category1 == "" 
+      || category2 == ""){
+      alert("Please fill in all the info.");
+      return;
+    }
+
+    if(category1 == category2){
+      alert("Category 1 and Category 2 should be different.");
+      return;
+    }
 
     updateFile(address, category1, category2)
         .then((res) => {
@@ -61,7 +71,9 @@ class EditInfo extends Component {
               }
             })
             .catch(() => {
-              this.setState({ message: '[!]' });
+              alert("Updating");
+              setTimeout(function(){ alert("Updated");}, 3000);
+              this.props.history.push('/');
             });
         }
 
@@ -94,7 +106,7 @@ class EditInfo extends Component {
               <h4>My 1st Favorite</h4>
               <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                 <label htmlFor="radioJapanese">
-                  <input onChange={this.handleCategory1Change.bind(this, 'Japanese')} className="uk-radio" type="radio" name="category1" />
+                  <input onChange={this.handleCategory1Change.bind(this, 'Japanese')} className="uk-radio" type="radio" name="category1"/>
                   Japanese
                 </label>
                 <label htmlFor="radioChinese">
