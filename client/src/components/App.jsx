@@ -11,6 +11,7 @@ import Friend from './Friend';
 import HomePage from './HomePage';
 import RouteProtector from './RouteProtector';
 import RouteVerifier from './RouteVerifier';
+import Restaurant from './Restaurant';
 
 class App extends PureComponent {
   render() {
@@ -22,6 +23,7 @@ class App extends PureComponent {
           <Route exact path="/register" component={RouteVerifier(Register)} />
           <Route exact path="/editinfo" component={RouteProtector(EditInfo)} />
           <Route exact path="/friend" component={Friend} />
+          <Route exact path="/restaurant" component={Restaurant} />
           <Route exact path="/" component={RouteProtector(Profile)} />
           <Route exact path="/homepage" component={RouteVerifier(HomePage)} />
         </div>
