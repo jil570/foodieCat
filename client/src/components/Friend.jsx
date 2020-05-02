@@ -4,7 +4,6 @@ import { rgba } from 'polished';
 import Searchbar from './Searchbar';
 import FriendCard from './FriendCard';
 import image from '../images/slide-5.jpg';
-import Post from './Post';
 import { getUser } from '../javascripts/userRequests';
 import { getLikes } from '../javascripts/postRequests';
 import {Tab, Tabs} from 'react-bootstrap';
