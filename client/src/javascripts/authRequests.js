@@ -2,7 +2,7 @@
 
 import { api } from '../api';
 
-async function register(firstName, lastName, email, password, username, image = null, address, category1, category2) {
+async function register(firstName, lastName, email, password, username, image = null, address, category1, category2, longitude, latitude) {
   const formData = new FormData();
   formData.append('firstName', firstName);
   formData.append('lastName', lastName);
@@ -13,6 +13,8 @@ async function register(firstName, lastName, email, password, username, image = 
   formData.append('address', address);
   formData.append('category1', category1);
   formData.append('category2', category2);
+  formData.append('longitude', longitude);
+  formData.append('latitude', latitude);
 
   return fetch(`${api.url}/register`,
     {

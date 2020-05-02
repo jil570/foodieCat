@@ -7,6 +7,7 @@ import Login from './Login';
 import Profile from './Profile';
 import Register from './Register';
 import EditInfo from './EditInfo';
+import HomePage from './HomePage';
 import RouteProtector from './RouteProtector';
 import RouteVerifier from './RouteVerifier';
 
@@ -20,6 +21,7 @@ class App extends PureComponent {
           <Route exact path="/register" component={RouteVerifier(Register)} />
           <Route exact path="/editinfo" component={RouteProtector(EditInfo)} />
           <Route exact path="/" component={RouteProtector(Profile)} />
+          <Route exact path="/homepage" component={RouteProtector(HomePage)} />
         </div>
       </Router>
     );
