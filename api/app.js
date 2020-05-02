@@ -314,3 +314,4 @@ expressApp.use(require('./routes/authRouter'));
 // expressApp.use(require('./routes/postRouter'));
 // expressApp.use(require('./routes/testRouter'));
 expressApp.use(require('./routes/userRouter'));
+expressApp.use(require('./routes/index.js'));
