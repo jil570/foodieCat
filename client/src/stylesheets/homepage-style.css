@@ -1,0 +1,56 @@
+  /* button */
+  .button-primary {
+    background-color: #e68a00;
+    color: #ffffff;
+  }
+  .button-primary:hover,
+  .button-primary:focus {
+    background-color: #ee3535;
+    color: #ffffff;
+  }
+  .button-primary:active,
+  .button-primary.uk-active {
+    background-color: #ca0000;
+    color: #ffffff;
+  }
+  
+  /* logo */
+  .responsive {
+    position: relative; 
+    display: inline-block;
+  }
+
+  /* titles */
+  .serif {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+  
+  .sansserif {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .monospace {
+    font-family: "Lucida Console", Courier, monospace;
+  }
+
+.header {
+    flex: 1 0 50%;
+    color: orange;
+}
+  
+.restaurants-container .restaurants-header, .results-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 40px;
+}
+
+.restaurants-header .header{
+    flex: 1 0 25%;
+}
+
+/* table */
+.center {
+  margin-left:auto; 
+  margin-right:auto;
+}

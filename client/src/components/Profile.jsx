@@ -56,43 +56,39 @@ class Profile extends Component {
               <div className="uk-section uk-section-default uk-padding-small uk-margin-left">
                 <div className="uk-flex uk-margin-small-bottom uk-flex-row uk-flex-middle">
                   <h1 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall">{data.username}</h1>
-                  <a className="uk-button uk-button-default uk-margin-left" style={{ height: '40px' }} href="/makePost">Create Post</a>
+                  <a className="uk-button uk-button-default uk-margin-left" style={{ height: '40px' }} href="/editinfo">Edit</a>
                 </div>
                 <ul className="uk-margin-remove" style={{ padding: '0px', listStyleType: 'none' }}>
                   <li className="uk-text-bold uk-margin-bottom uk-margin-right uk-float-left">
                     <span id="posts" className="uk-text-light">
-                      posts:
+                      First Name:
                       {' '}
-                      {data.posts.length}
+                      {data.firstName}
                     </span>
                   </li>
                   <li className="uk-text-bold uk-margin-bottom uk-margin-left uk-margin-right uk-float-left">
                     <span id="followers" className="uk-text-light">
-                      followers:
+                      Last Name:
                       {' '}
-                      <a href="/follower">{data.followers.length}</a>
-                    </span>
-                  </li>
-                  <li className="uk-text-bold uk-margin-bottom uk-margin-left uk-float-left">
-                    <span id="following" className="uk-text-light">
-                      following:
-                      {' '}
-                      <a href="/followee">{data.followees.length}</a>
+                      {data.lastName}
                     </span>
                   </li>
                 </ul>
-                <div className="uk-flex uk-flex-row uk-flex-middle uk-flex-center" />
-                <p id="name" className="uk-text-light" />
               </div>
-              <div className="uk-container uk-container-small uk-margin-top">
-                <div id="recentPost" className="uk-child-width-1-2@m uk-align-center uk-background-default">
-                  {/* The most recent post will be added here. */}
-                </div>
-              </div>
+            <div className="uk-flex uk-margin-small-bottom uk-flex-row uk-flex-middle">
+              <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> Say Hi! {data.username} is currently at <a>{data.address}</a></h2>
             </div>
+            <div className="uk-flex uk-margin-small-bottom uk-flex-row uk-flex-middle">
+              <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> {data.username} has a hearty appetite for <a>{data.category1}</a>, <a>{data.category2}</a> food</h2>
+            </div>
+            <div className="uk-flex uk-margin-small-bottom uk-flex-row uk-flex-middle">
+              <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> {data.username} 's current coordinate is (lat:<a>{data.latitude}</a>, lng:<a>{data.longitude}</a>) </h2>
+            </div>
+           </div>
           </div>
         </div>
       </div>
+      
     );
   }
 }

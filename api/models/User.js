@@ -42,21 +42,25 @@ const UserSchema = new mongoose.Schema({
     type: Buffer,
     required: false,
   },
-  posts: {
-    type: Array,
-    required: false,
+  address:{
+    type: String,
+    required: true,
   },
-  likes: {
-    type: Array,
-    required: false,
+  category1:{
+    type: String,
+    required: true,
   },
-  followers: {
-    type: Array,
-    required: false,
+  category2:{
+    type: String,
+    required: true,
   },
-  followees: {
-    type: Array,
-    required: false,
+  longitude:{
+    type: String,
+    required: true,
+  },
+  latitude:{
+    type: String,
+    required: true,
   },
 });
 

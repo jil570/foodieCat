@@ -1,11 +1,12 @@
 /* eslint-disable global-require */
 /* globals */
 import React, { PureComponent } from 'react';
+import '../stylesheets/nav-bar.css';
 
 class NavBar extends PureComponent {
   render() {
     return (
-      <header className="uk-margin-medium-bottom" style={{ backgroundColor: '#fff', borderBottom: '1px solid #dbdbdb' }} data-uk-sticky={{ 'show-on-up': 'true', animation: 'uk-animation-fade' }}>
+      <header className="uk-margin-small-bottom" style={{ backgroundColor: '#fff', borderBottom: '1px solid #dbdbdb' }} data-uk-sticky={{ 'show-on-up': 'true', animation: 'uk-animation-fade' }}>
         <div className="uk-container uk-container-small">
           <nav id="navbar" data-uk-navbar={{ mode: 'click' }}>
             <div className="uk-navbar-left">
@@ -14,19 +15,29 @@ class NavBar extends PureComponent {
             <div className="uk-navbar-right">
               <ul className="uk-navbar-nav">
                 <li>
-                  <a href="/like" data-uk-icon="icon:heart"> </a>
+                  <a className="tooltip" href="/like" data-uk-icon="icon:heart">
+                      <span className="tooltiptext">Likes</span>
+                  </a>
                 </li>
                 <li>
-                  <a href="/profile" data-uk-icon="icon:user"> </a>
+                  <a className="tooltip" href="/profile" data-uk-icon="icon:user"> 
+                    <span className="tooltiptext">Profile</span>
+                  </a>
                 </li>
                 <li>
-                  <a href="/makePost" data-uk-icon="icon:image"> </a>
+                  <a className="tooltip" href="/editinfo" data-uk-icon="icon:image"> 
+                    <span className="tooltiptext">Edit Profile</span>
+                  </a>
                 </li>
                 <li>
-                  <a href="/follow" data-uk-icon="icon:users"> </a>
+                  <a className="tooltip" href="/follow" data-uk-icon="icon:users"> 
+                    <span className="tooltiptext">Follow</span>
+                  </a>
                 </li>
                 <li>
-                  <a href="/login" data-uk-icon="icon:sign-out" uk-toggle="true"> </a>
+                  <a className="tooltip" href="/login" data-uk-icon="icon:sign-out" uk-toggle="true"> 
+                    <span className="tooltiptext">Log Out</span>
+                  </a>
                 </li>
               </ul>
             </div>
