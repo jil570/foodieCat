@@ -25,7 +25,9 @@ class NavBar extends PureComponent {
                   </a>
                 </li>
                 <li>
-                  <a href="/editinfo" data-uk-icon="icon:image"> </a>
+                  <a className="tooltip" href="/editinfo" data-uk-icon="icon:image"> 
+                    <span className="tooltiptext">Edit Profile</span>
+                  </a>
                 </li>
                 <li>
                   <a className="tooltip" href="/follow" data-uk-icon="icon:users"> 
