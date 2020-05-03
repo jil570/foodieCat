@@ -288,6 +288,46 @@ function getRestaurant2(req, res) {
   });
 };
 
+
+/* --Query 12-- */ 
+// returns restaurant name, avg stars, review text, and distance for user location
+function getRestaurant3(req, res) {
+  var stars = parseFloat(req.params.stars);
+  var category1 = '%' + req.params.category1 + '%';
+  var category2 = '%' + req.params.category2 + '%'; 
+  var latitude = parseFloat(req.params.latitude);
+  var longitude = parseFloat(req.params.longitude);  
+
+  var query = `
+  WITH distance AS (
+  SELECT business_id, name, stars, categories, ROUND((6371 * acos(cos(radians(latitude))  
+      * cos( radians(${latitude}) ) 
+      * cos( radians(${longitude}) - radians(longitude)) + sin( radians(latitude) ) 
+      * sin(radians(${latitude})))),2) AS distance
+  FROM Business
+  WHERE stars > ${stars} AND categories LIKE '%Restaurants%' AND categories LIKE '${category1}' AND categories LIKE '${category2}'
+  ORDER BY distance, stars DESC
+  LIMIT 10),
+  rnk AS (
+  SELECT business_id, text, stars, useful, RANK() OVER (PARTITION BY business_id ORDER BY useful) AS rnk
+  FROM Reviews
+  WHERE business_id in (SELECT business_id FROM distance))
+  SELECT name, d.stars AS avg_stars, text, distance
+  FROM distance d
+  JOIN rnk r
+  ON d.business_id = r.business_id
+  WHERE rnk < 6
+  ORDER BY distance, d.stars DESC
+  `;
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      console.log(rows);
+      res.json(rows);
+    }
+  });
+}
+
 // The exported functions, which can be accessed in index.js.
 module.exports = {
   getTopRestaurants: getTopRestaurants,
@@ -299,7 +339,8 @@ module.exports = {
   getDistance: getDistance,
   getLocalReviews: getLocalReviews,
   getTopLocal: getTopLocal,
-  getRestaurant2: getRestaurant2
+  getRestaurant2: getRestaurant2,
+  getRestaurant3: getRestaurant3
 }
 
 
