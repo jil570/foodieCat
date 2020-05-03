@@ -266,6 +266,28 @@ function getTopLocal(req, res) {
   });   
 }
 
+/* --Query 11-- */
+function getRestaurant2(req, res) {
+  var stars = parseFloat(req.params.stars);
+  var category1 = '%' + req.params.category1 + '%';
+  var category2 = '%' + req.params.category2 + '%';
+
+  var query = `
+  SELECT name, categories, stars, review_count
+  FROM Business
+  WHERE categories LIKE '%Restaurants%' AND categories LIKE '${category1}' 
+  AND categories LIKE '${category2}' AND stars > ${stars};
+  `;
+
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      console.log(rows);
+      res.json(rows);
+    }
+  });
+};
+
 // The exported functions, which can be accessed in index.js.
 module.exports = {
   getTopRestaurants: getTopRestaurants,
@@ -276,7 +298,8 @@ module.exports = {
   getTopReviews2: getTopReviews2,
   getDistance: getDistance,
   getLocalReviews: getLocalReviews,
-  getTopLocal: getTopLocal
+  getTopLocal: getTopLocal,
+  getRestaurant2: getRestaurant2
 }
 
 
