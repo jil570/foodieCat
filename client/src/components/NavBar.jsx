@@ -15,6 +15,11 @@ class NavBar extends PureComponent {
             <div className="uk-navbar-right">
               <ul className="uk-navbar-nav">
                 <li>
+                  <a className="tooltip" href="/findrestaurant" data-uk-icon="icon:search">
+                    <span className="tooltiptext">Find Restaurant</span>
+                  </a>
+                </li>
+                <li>
                   <a className="tooltip" href="/like" data-uk-icon="icon:heart">
                       <span className="tooltiptext">Likes</span>
                   </a>
@@ -30,8 +35,13 @@ class NavBar extends PureComponent {
                   </a>
                 </li>
                 <li>
-                  <a className="tooltip" href="/follow" data-uk-icon="icon:users"> 
-                    <span className="tooltiptext">Follow</span>
+                  <a className="tooltip" href="/restaurant" data-uk-icon="icon:location"> 
+                    <span className="tooltiptext">Restaurant</span>
+                  </a>
+                </li>
+                <li>
+                  <a className="tooltip" href="/friend" data-uk-icon="icon:users">
+                    <span className="tooltiptext">Friend</span>
                   </a>
                 </li>
                 <li>
