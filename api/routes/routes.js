@@ -93,10 +93,14 @@ function getTwoRestaurantDistance(req, res) {
   SELECT *
   FROM A_loc, B_loc
   )
-  SELECT A_business, B_business,
-  3956*2* ASIN(SQRT(POWER(SIN((A_latitude - abs(B_latitude))*3.1515926/180/2), 2) + COS(A_longitude * 3.1415926/180) * COS(abs(B_latitude) * 3.1415926/180)*POWER(SIN((A_longitude - B_longitude)*3.1415926/180/2), 2))) 
-  AS distance
-  FROM AB_loc;`;
+  SELECT A_business, B_business, 
+  ROUND((6371 * acos( cos( radians(A_latitude) )  
+      * cos( radians(B_latitude ) ) 
+      * cos( radians(B_longitude ) - radians(A_longitude)) + sin( radians(A_latitude) ) 
+      * sin(radians(B_latitude)))),2) AS distance
+      FROM AB_loc
+      ORDER BY distance
+      LIMIT 5`;
 
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
@@ -168,12 +172,14 @@ function getDistance(req, res) {
   WHERE name = '"${restaurant}"'
   )
   SELECT business_id, name,
-  3956 * 2 * ASIN(SQRT(POWER(SIN((33 - abs(${latitude})) * 3.1515926/180/2), 2) 
-  + COS(-111.3 * 3.1415926/180) * COS(abs(${latitude}) * 3.1415926/180)  
-  * POWER(SIN((-111.3 - ${longitude}) * 3.1415926/180/2), 2) )) 
+  ROUND((6371 * acos(cos(radians(latitude))  
+      * cos( radians(${latitude} ) ) 
+      * cos( radians(${longitude}) - radians(longitude)) + sin( radians(latitude) ) 
+      * sin(radians(${latitude})))),2) 
   AS distance
   FROM shop_location
-  ORDER BY distance ASC;`;
+  ORDER BY distance ASC
+  LIMIT 5;`;
 
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
