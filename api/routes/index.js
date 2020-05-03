@@ -20,7 +20,10 @@ const app = express.Router();
 // The route localhost:8081/genres is registered to the function
 // routes.getTopRestaurants, specified in routes.js.
 //Query 2
-app.get('/home/:city/:state/:category', routes.getTopRestaurants); //good
+app.get('/home/:city/:category', routes.getTopRestaurants); //good
+
+//Query 2.1 (default without selecting city or category)
+app.get('/home/usa', routes.getTopRestaurantsUSA);
 
 /* --Discover Users Page-- */
 //Query 3

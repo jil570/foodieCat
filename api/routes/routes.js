@@ -13,13 +13,27 @@ var connection = mysql.createPool(config);
 /* -- Home Page get Top Restaurants -- */
 function getTopRestaurants(req, res) {
   var city = req.params.city;
-  var state = req.params.state;
   var category = '%' + req.params.category + '%';
 
   var query = `
   SELECT name, stars, review_count
   FROM Business
-  WHERE city = '${city}' AND state = '${state}' AND categories LIKE '%Restaurants%' AND categories LIKE '${category}'
+  WHERE city = '${city}' AND categories LIKE '%Restaurants%' AND categories LIKE '${category}'
+  ORDER BY stars DESC, review_count DESC
+  LIMIT 10;`;
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      res.json(rows);
+    }
+  });
+};
+
+function getTopRestaurantsUSA(req, res) {
+  var query = `
+  SELECT name, stars, review_count
+  FROM Business
+  WHERE categories LIKE '%Restaurants%'
   ORDER BY stars DESC, review_count DESC
   LIMIT 10;`;
   connection.query(query, function(err, rows, fields) {
@@ -285,6 +299,7 @@ function getRestaurant2(req, res) {
 // The exported functions, which can be accessed in index.js.
 module.exports = {
   getTopRestaurants: getTopRestaurants,
+  getTopRestaurantsUSA:getTopRestaurantsUSA,
   getTopReviews1: getTopReviews1,
   getSimilarUsers: getSimilarUsers,
   getTwoRestaurantDistance: getTwoRestaurantDistance,

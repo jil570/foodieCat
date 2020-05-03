@@ -1,37 +1,37 @@
-  /* button */
-  .button-primary {
-    background-color: #e68a00;
-    color: #ffffff;
-  }
-  .button-primary:hover,
-  .button-primary:focus {
-    background-color: #ee3535;
-    color: #ffffff;
-  }
-  .button-primary:active,
-  .button-primary.uk-active {
-    background-color: #ca0000;
-    color: #ffffff;
-  }
-  
-  /* logo */
-  .responsive {
-    position: relative; 
-    display: inline-block;
-  }
+/* button */
+.button-primary {
+  background-color: #e68a00;
+  color: #ffffff;
+}
+.button-primary:hover,
+.button-primary:focus {
+  background-color:#08a9d1 ;
+  color: #ffffff;
+}
+.button-primary:active,
+.button-primary.uk-active {
+  background-color: #3690b9c4;
+  color: #ffffff;
+}
 
-  /* titles */
-  .serif {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-  }
-  
-  .sansserif {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .monospace {
-    font-family: "Lucida Console", Courier, monospace;
-  }
+/* logo */
+.responsive {
+  position: relative; 
+  display: inline-block;
+}
+
+/* titles */
+.serif {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.sansserif {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.monospace {
+  font-family: "Lucida Console", Courier, monospace;
+}
 
 .header {
     flex: 1 0 50%;

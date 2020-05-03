@@ -15,6 +15,11 @@ class NavBar extends PureComponent {
             <div className="uk-navbar-right">
               <ul className="uk-navbar-nav">
                 <li>
+                  <a className="tooltip" href="/homepage" data-uk-icon="icon:home">
+                    <span className="tooltiptext">Home</span>
+                  </a>
+                </li>
+                <li>
                   <a className="tooltip" href="/findrestaurant" data-uk-icon="icon:search">
                     <span className="tooltiptext">Find Restaurant</span>
                   </a>
