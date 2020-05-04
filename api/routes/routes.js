@@ -214,7 +214,7 @@ function getLocalReviews(req, res) {
   JOIN (
   SELECT business_id, stars, MAX(useful) as max_use
   FROM Reviews
-  GROUP BY (business_id, stars)
+  GROUP BY business_id, stars
   HAVING MAX(useful) > 1
   ORDER BY max_use DESC, stars DESC) mm
   ON r.business_id = mm.business_id AND r.stars = mm.stars AND r.useful = mm.max_use
@@ -300,7 +300,7 @@ function getRestaurant3(req, res) {
 
   var query = `
   WITH distance AS (
-  SELECT business_id, name, stars, categories, ROUND((6371 * acos(cos(radians(latitude))  
+  SELECT business_id, name, address, city, state, stars, categories, ROUND((6371 * acos(cos(radians(latitude))  
       * cos( radians(${latitude}) ) 
       * cos( radians(${longitude}) - radians(longitude)) + sin( radians(latitude) ) 
       * sin(radians(${latitude})))),2) AS distance
@@ -312,7 +312,7 @@ function getRestaurant3(req, res) {
   SELECT business_id, text, stars, useful, RANK() OVER (PARTITION BY business_id ORDER BY useful) AS rnk
   FROM Reviews
   WHERE business_id in (SELECT business_id FROM distance))
-  SELECT name, d.stars AS avg_stars, text, distance
+  SELECT name, address, city, state, d.stars AS avg_stars, text, distance
   FROM distance d
   JOIN rnk r
   ON d.business_id = r.business_id
