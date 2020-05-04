@@ -55,8 +55,13 @@ app.get('/local/:city/:category', routes.getLocalReviews); //
 //Local Top Restaurants
 app.get('/local/:city', routes.getTopLocal);
 
+//Query 11
+//Multiple Categories
 app.get('/restaurant/:stars/:category1/:category2', routes.getRestaurant2);
 
+//Query 12
+// returns restaurant name, avg stars, review text, and distance for user location
+app.get('/restaurant/:stars/:category1/:category2/:latitude/:longitude', routes.getRestaurant3);
 
 // app.listen(8081, () => {
 // 	console.log(`Server listening on PORT 8081`);
