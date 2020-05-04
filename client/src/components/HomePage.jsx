@@ -86,14 +86,14 @@ class HomePage extends Component {
     return (
       <div>
         <NavBar />
-        <div className="uk-flex-column">
+        <div>
           <div
             id="slideshow1"
             className="uk-cover-container uk-background-blend-screen uk-background-secondary uk-flex uk-light uk-flex-center uk-flex-middle uk-height-viewport uk-background-cover"
             data-uk-height-viewport="true"
             style={{ backgroundImage: `url(${image4})` }}
           >
-            <div className="uk-border-rounded uk-flex-center uk-flex-middle uk-padding-large" style={{ backgroundColor: rgba(0, 0, 0, 0.6) }}>
+           <div className="uk-border-rounded uk-width-3-4 uk-padding-large uk-position-z-index" uk-scrollspy="cls: uk-animation-fade" style={{ backgroundColor: rgba(0, 0, 0, 0.7) }}>
               <p className="uk-flex uk-flex-middle">
               <div className="uk-inline uk-flex-first uk-align-center uk-heading-large uk-text-center" style={{ color: rgba(255, 213, 79, 1) }}>
                 <div className="serif">foodieCat</div>
