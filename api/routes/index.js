@@ -44,7 +44,7 @@ app.get('/restaurant/:stars/:category', routes.getRestaurant1); //good
 
 //Query 7
 //Get top 10 reviews at a restaurant since a given date
-app.get('/:restaurant/:date', routes.getTopReviews2); //not implemented yet
+app.get('/reviews/:restaurant/:date', routes.getTopReviews2); //not implemented yet
 
 //Query 8
 //Distance Between User and Restaurant
@@ -65,6 +65,10 @@ app.get('/restaurant/:stars/:category1/:category2', routes.getRestaurant2);
 //Query 12
 // returns restaurant name, avg stars, review text, and distance for user location
 app.get('/restaurant/:stars/:category1/:category2/:latitude/:longitude', routes.getRestaurant3);
+
+//Query 13
+// returns recommendations for two users
+app.get('/recommendations/:latitude/:longitude/:category1/:category2', routes.getRecommendations);
 
 // app.listen(8081, () => {
 // 	console.log(`Server listening on PORT 8081`);
