@@ -1,8 +1,7 @@
 /* globals */
 import React, { Component } from 'react';
-import { rgba } from 'polished';
-import '../stylesheets/auth-pages-style.css';
-import image from '../images/slide-5.jpg';
+import ReviewComponent from './ReviewComponent';
+
 
 class RestComponent extends Component {
     constructor(props) {
@@ -30,11 +29,17 @@ class RestComponent extends Component {
     render() {
         return (
             <div>
-                <li >List item 1</li>
-                <p>Description</p>
+            <div>
+                <div className="uk-grid uk-margin-bottom">
+                    <div className="uk-margin-right"><h5 className="uk-card-title">{this.props.restname}</h5></div>
+                        <span uk-icon="star" className="uk-flex uk-flex-middle">Rating: {this.props.star}</span>
+                        <span className="uk-flex uk-flex-middle uk-width-1">Location: {this.props.address}, {this.props.city}, {this.props.state}</span>
+                        <span className="uk-flex uk-flex-middle uk-width-1">Distance From You: {this.props.dist} MILES</span>
+                </div>
                 {this.state.active ? (<p>{this.props.text}</p>) : null}
                 <a className={"uk-button uk-button-default"} onClick={this.toggleClass}>{this.state.text}</a>
-                <hr/>
+            </div>
+                <hr />
             </div>
         );
     }

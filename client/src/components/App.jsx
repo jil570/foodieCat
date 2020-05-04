@@ -12,6 +12,7 @@ import FindRestaurant from './FindRest';
 import RecRestaurant from './RecRest';
 import RouteProtector from './RouteProtector';
 import RouteVerifier from './RouteVerifier';
+import RestResult from './RestResult';
 
 class App extends PureComponent {
   render() {
@@ -23,6 +24,7 @@ class App extends PureComponent {
           <Route exact path="/register" component={RouteVerifier(Register)} />
           <Route exact path="/editinfo" component={RouteProtector(EditInfo)} />
           <Route exact path="/findrestaurant" component={RouteProtector(FindRestaurant)} />
+          <Route exact path="/findrestaurant/result" component={RouteProtector(RestResult)} />
           <Route exact path="/restaurant" component={RouteProtector(RecRestaurant)} />
           <Route exact path="/" component={RouteProtector(Profile)} />
           <Route exact path="/homepage" component={RouteProtector(HomePage)} />
