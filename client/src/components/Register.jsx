@@ -54,7 +54,6 @@ class Register extends Component {
     const { category2 } = this.state;
     const { longitude } = this.state;
     const { latitude } = this.state;
-    const { privary } = this.state;
 
     register(
       firstName,
@@ -68,7 +67,6 @@ class Register extends Component {
       category2,
       longitude,
       latitude,
-      privary,
     )
       .then((res) => {
         if (res.ok) {
