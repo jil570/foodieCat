@@ -22,9 +22,6 @@ const app = express.Router();
 //Query 2
 app.get('/home/:city/:category', routes.getTopRestaurants); //good
 
-//Query 2.1 (default without selecting city or category)
-app.get('/home/usa', routes.getTopRestaurantsUSA);
-
 /* --Discover Users Page-- */
 //Query 3
 //Most useful reviews

@@ -29,21 +29,6 @@ function getTopRestaurants(req, res) {
   });
 };
 
-function getTopRestaurantsUSA(req, res) {
-  var query = `
-  SELECT name, stars, review_count
-  FROM Business
-  WHERE categories LIKE '%Restaurants%'
-  ORDER BY stars DESC, review_count DESC
-  LIMIT 10;`;
-  connection.query(query, function(err, rows, fields) {
-    if (err) console.log(err);
-    else {
-      res.json(rows);
-    }
-  });
-};
-
 /* -- Query 3 -- */
 /* -- Most useful reviews of a restaurant -- */
 function getTopReviews1(req, res) {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import image4 from '../images/slide-4.jpg';
 import { rgba } from 'polished';
 import logo from '../images/logo.png';
@@ -14,10 +15,7 @@ class HomePage extends Component {
       cities: ['Las Vegas', 'Phoenix', 'Pittsburgh', 'Madison', 'Champaign', 'Charlotte'],
       categories: ['Japanese', 'Chinese', 'Mexican', 'Italian', 'Ice Cream & Frozen Yogurt', 'Fast Food'],
       restaurants: [],
-      result_header:
-        <div className="uk-text-lead uk-text-center serif" style={{ color: rgba(52, 73, 94 , 1) }}>
-        Top Restaurants in USA
-        </div>
+      result_header:<div></div>
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -74,33 +72,6 @@ class HomePage extends Component {
       console.log(err);
     });
   }
-
-  componentDidMount() {
-    fetch('http://localhost:9000/home/usa',
-        {
-          method: 'GET'
-        }).then(res => {
-          return res.json();
-    }, err => {
-      console.log(err);
-    }).then( restaurantList => {
-      if (!restaurantList) return;
-
-      let restaurantDivs = restaurantList.map((restaurantObj, i) =>
-        <tr>
-          <td>{restaurantObj.name}</td>
-          <td>{restaurantObj.stars}</td>
-          <td>{restaurantObj.review_count}</td>
-        </tr>
-      );
-      this.setState({
-        restaurants: restaurantDivs
-      });
-    }, err => {
-      console.log(err);
-    });
-}
-  
 
   render() {
     const { cities, categories} = this.state;
@@ -172,35 +143,21 @@ class HomePage extends Component {
                   </div>
                   <br></br><br></br>
                   <div>
-                    <input type="submit" className="button-primary uk-button-large uk-text-large" value="Get Top Restaurants ->" />
+                    <input href="/homepage/result" type="submit" className="button-primary uk-button-large uk-text-large" value="Get Top Restaurants ->" />
                   </div>
+                  {this.state.restaurants.length > 0 &&
+                    <Redirect to={{
+                        pathname: '/homepage/result',
+                        state: {
+                          result_header: this.state.result_header,
+                          restaurants: this.state.restaurants
+                        }
+                    }} />}
                   </fieldset>
                 </form>
               </div>
             </div>
           </div>           
-          <div           
-          id="slideshow2"
-          className="uk-flex uk-flex-column uk-padding-large" style={{ backgroundColor: rgba(252, 243, 207, 0.5) }}
-          >
-            <p className="center uk-flex uk-wrap uk-flex-top">
-              {this.state.result_header}
-            </p>
-            <div className="center uk-flex uk-flex-middle uk-flex-center">
-              <table style={{ color: rgba(52, 73, 94, 0.9) }} className="uk-table uk-table-hover uk-table-divider uk-flex-middle uk-flex-right uk-table-middle uk-table-large">
-                <thead>
-                    <tr>
-                        <th style={{ color: rgba(46, 64, 83, 0.6) }}>Restaurant</th>
-                        <th style={{ color: rgba(46, 64, 83, 0.6) }}>Star Rating</th>
-                        <th style={{ color: rgba(46, 64, 83, 0.6) }}>Yelp Review Count</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {this.state.restaurants}
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
       </div>
     );

@@ -8,6 +8,7 @@ import Profile from './Profile';
 import Register from './Register';
 import EditInfo from './EditInfo';
 import HomePage from './HomePage';
+import HomeRest from './HomeRest';
 import FindRestaurant from './FindRest';
 import RecRestaurant from './RecRest';
 import RouteProtector from './RouteProtector';
@@ -27,7 +28,8 @@ class App extends PureComponent {
           <Route exact path="/findrestaurant/result" component={RouteProtector(RestResult)} />
           <Route exact path="/restaurant" component={RouteProtector(RecRestaurant)} />
           <Route exact path="/" component={RouteProtector(Profile)} />
-          <Route exact path="/homepage" component={RouteProtector(HomePage)} />
+          <Route exact path="/homepage" component={RouteVerifier(HomePage)} />
+          <Route exact path="/homepage/result" component={RouteVerifier(HomeRest)} />
         </div>
       </Router>
     );
