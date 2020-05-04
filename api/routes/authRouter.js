@@ -33,6 +33,7 @@ router.post('/register', checkNotAuthenticated,
     const { category2 } = req.body;
     const { longitude } = req.body;
     const { latitude } = req.body;
+    const { privary } = req.body;
     const { file } = req;
 
     if (file && !checkFileSize(file)) {
@@ -94,6 +95,7 @@ router.post('/register', checkNotAuthenticated,
                     category2,
                     longitude,
                     latitude,
+                    privary,
                   });
 
                   newUser.save()
