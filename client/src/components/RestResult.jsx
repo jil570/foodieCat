@@ -21,8 +21,35 @@ class RestResult extends Component {
 
     componentDidMount() {
         let restaurantList = this.props.location.state.results;
+        // let restaurantKeys = new Set();
+        // let mergedList = restaurantList.filter(item => {
+        //     if (!restaurantKeys.has(item.business_id)){
+        //         restaurantKeys.add(item.business_id);
+        //         return true;
+        //     }
+        //     return false;
+        // }, restaurantKeys);
+
+        var output = [];
+
+        restaurantList.forEach(function (item) {
+            var existing = output.filter(function (v, i) {
+                return v.business_id == item.business_id;
+            });
+            if (existing.length) {
+                var existingIndex = output.indexOf(existing[0]);
+                output[existingIndex].text = output[existingIndex].text.concat(item.text);
+            } else {
+                if (typeof item.text == 'string')
+                    item.text = [item.text];
+                output.push(item);
+            }
+        });
+
+        console.log(output);
+
         let restaurantObj = restaurantList.map((rest, i) =>
-        <RestComponent restname={rest.name} categories={rest.categories} star={rest.stars} />);
+            <RestComponent key={rest.business_id} restname={rest.name} text={rest.text} star={rest.avg_stars} address={rest.address} city={rest.city} state={rest.state} dist={rest.distance}/>);
         this.setState({ restaurants: restaurantObj});
 
         console.log(restaurantList);

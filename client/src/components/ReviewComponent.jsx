@@ -15,8 +15,6 @@ class ReviewComponent extends Component {
                         <div className="uk-margin-right"><h5 className="uk-card-title">{this.props.restname}</h5></div>
                         <span uk-icon="star" className="uk-flex uk-flex-middle">Rating: {this.props.star}</span>
                     </div>
-                    {this.state.active ? (<p>{this.props.categories}</p>) : null}
-                    <a className={"uk-button uk-button-default"} onClick={this.toggleClass}>{this.state.text}</a>
                 </div>
                 <hr />
             </div>

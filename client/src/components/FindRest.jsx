@@ -80,6 +80,7 @@ class FindRestaurant extends Component {
             {
                 method: "GET"
             }).then(res => {
+                console.log(res);
                 return res.json();
             }, err => {
                 console.log(err);
