@@ -42,7 +42,15 @@ const UserSchema = new mongoose.Schema({
     type: Buffer,
     required: false,
   },
-  address:{
+  street:{
+    type: String,
+    required: true,
+  },
+  city:{
+    type: String,
+    required: true,
+  },
+  state:{
     type: String,
     required: true,
   },
@@ -59,6 +67,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   latitude:{
+    type: String,
+    required: true,
+  },
+  status:{
     type: String,
     required: true,
   },

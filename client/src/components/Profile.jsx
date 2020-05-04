@@ -76,13 +76,16 @@ class Profile extends Component {
                 </ul>
               </div>
             <div className="uk-flex uk-margin-small-bottom uk-flex-row uk-flex-middle">
-              <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> Say Hi! {data.username} is currently at <a>{data.address}</a></h2>
+              <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> Say Hi! {data.username} is currently at <a>{data.street}</a>, <a>{data.city}</a>, <a>{data.state}</a>.</h2>
             </div>
             <div className="uk-flex uk-margin-small-bottom uk-flex-row uk-flex-middle">
               <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> {data.username} has a hearty appetite for <a>{data.category1}</a>, <a>{data.category2}</a> food</h2>
             </div>
             <div className="uk-flex uk-margin-small-bottom uk-flex-row uk-flex-middle">
               <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> {data.username} 's current coordinate is (lat:<a>{data.latitude}</a>, lng:<a>{data.longitude}</a>) </h2>
+            </div>
+            <div className="uk-flex uk-margin-small-bottom uk-flex-row uk-flex-middle">
+              <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> {data.username} 's current profile status is <a>{data.status}</a>. </h2>
             </div>
            </div>
           </div>
