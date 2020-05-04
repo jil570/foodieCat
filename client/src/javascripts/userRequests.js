@@ -3,8 +3,9 @@
 import { api } from '../api';
 
 
-async function updateFile(address, category1, category2) {
+async function updateFile(street, city, state, status, category1, category2) {
   //handle fetch and update long lat.
+  var address = street + ", " + city + ", " + state;
   var new_address = address.replace(/ /g,"+");
   var longitude = "x"
   var latitude = "y";
@@ -18,7 +19,10 @@ async function updateFile(address, category1, category2) {
       {
         method: 'POST',
         body: JSON.stringify({
-          address,
+          street,
+          city,
+          state,
+          status,
           category1,
           category2,
           longitude:data.results[0].geometry.location['lng'].toString(),

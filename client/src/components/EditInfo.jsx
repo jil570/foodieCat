@@ -9,7 +9,9 @@ class EditInfo extends Component {
     super(props);
 
     this.state = {
-      address: '',
+      street: '',
+      city:'',
+      state:'',
       category1: '' ,
       category2: '',
       longitude:'unset',
@@ -37,17 +39,28 @@ class EditInfo extends Component {
     this.setState({ category2: event });
   }
 
+  handleStatusChange(event) {
+    console.log(event);
+    this.setState({ status: event });
+  }
+
   handleSubmit(event) {
     event.preventDefault();
 
     const {
-        address,
+        street,
+        city,
+        state,
+        status,
         category1,
         category2,
         message,
     } = this.state;
 
-    if(address == ""
+    if( street == ""
+      || city == ""
+      || state == ""
+      || status == ""
       || category1 == "" 
       || category2 == ""){
       alert("Please fill in all the info.");
@@ -59,7 +72,8 @@ class EditInfo extends Component {
       return;
     }
 
-    updateFile(address, category1, category2)
+    console.log(status);
+    updateFile(street, city, state, status, category1, category2)
         .then((res) => {
             if (res.ok) {
                 // eslint-disable-next-line react/prop-types
@@ -75,7 +89,7 @@ class EditInfo extends Component {
               setTimeout(function(){ alert("Updated");}, 1000);
               this.props.history.push('/');
             });
-        }
+  }
 
   render() {
     let { message } = this.state;
@@ -100,8 +114,25 @@ class EditInfo extends Component {
             <fieldset className="uk-fieldset">
               <h2>Edit Profile</h2>
               <h4>New Address</h4>
-              <div className="">
-                <input onChange={this.handleChange} id="address" className="uk-input" type="text" placeholder="New Address" />
+              <div className="uk-margin-small">
+                <input onChange={this.handleChange} id="street" className="uk-input" type="text" placeholder="Your Street" />
+              </div>
+              <div className="uk-margin-small">
+                <input onChange={this.handleChange} id="city" className="uk-input uk-form-width-medium" type="text" placeholder="Your City" />
+              </div>
+              <div className="uk-margin-small">
+                <input onChange={this.handleChange} id="state" className="uk-input uk-form-width-small" type="text" placeholder="Your State" />
+              </div>
+              <h4>Wanna Dine out with New Friends?</h4>
+              <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                <label htmlFor="radioYes">
+                  <input onChange={this.handleStatusChange.bind(this, 'open')} className="uk-radio" type="radio" name="status"/>
+                    Yes!!
+                </label>
+                <label htmlFor="radioNo">
+                  <input onChange={this.handleStatusChange.bind(this, 'private')} className="uk-radio" type="radio" name="status" />
+                    I am good.
+                </label>
               </div>
               <h4>My 1st Favorite</h4>
               <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">

@@ -16,12 +16,14 @@ class Register extends Component {
       password: '',
       image: null,
       message: '',
-      address:'unset',
+      street:'unset',
+      city:'unset',
+      state:'unset',
       category1: 'unset',
       category2:'unset',
       longitude:'unset',
       latitude:'unset',
-      privary:'open',
+      status:'open',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -49,11 +51,14 @@ class Register extends Component {
     const { password } = this.state;
     const { username } = this.state;
     const { image } = this.state;
-    const { address } = this.state;
+    const { street } = this.state;
+    const { city } = this.state;
+    const { state } = this.state;
     const { category1 } = this.state;
     const { category2 } = this.state;
     const { longitude } = this.state;
     const { latitude } = this.state;
+    const { status } = this.state;
 
     register(
       firstName,
@@ -62,11 +67,14 @@ class Register extends Component {
       password,
       username,
       image,
-      address,
+      street,
+      city,
+      state,
       category1,
       category2,
       longitude,
       latitude,
+      status,
     )
       .then((res) => {
         if (res.ok) {

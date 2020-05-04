@@ -81,7 +81,10 @@ router.get('/getOtherUser/:username', checkAuthenticated, (req, res) => {
 
 router.post('/profile', checkAuthenticated, async (req, res) => {
       const { username } = req.user;
-      const { address } = req.body;
+      const { street } = req.body;
+      const { city } = req.body;
+      const { state } = req.body;
+      const { status } = req.body;
       const { category1 } = req.body;
       const { category2 } = req.body;
       const { longitude } = req.body;
@@ -89,7 +92,7 @@ router.post('/profile', checkAuthenticated, async (req, res) => {
 
     User.findOneAndUpdate(
         { username },
-        { $set: { 'address': address, 'category1': category1, 'category2': category2 , 'longitude': longitude, 'latitude': latitude } },
+        { $set: { 'street': street, 'city': city, 'state': state, 'status': status, 'category1': category1, 'category2': category2 , 'longitude': longitude, 'latitude': latitude } },
       )
         .then(() => {
           res.sendStatus(200);
