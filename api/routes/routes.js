@@ -29,21 +29,6 @@ function getTopRestaurants(req, res) {
   });
 };
 
-function getTopRestaurantsUSA(req, res) {
-  var query = `
-  SELECT name, stars, review_count
-  FROM Business
-  WHERE categories LIKE '%Restaurants%'
-  ORDER BY stars DESC, review_count DESC
-  LIMIT 10;`;
-  connection.query(query, function(err, rows, fields) {
-    if (err) console.log(err);
-    else {
-      res.json(rows);
-    }
-  });
-};
-
 /* -- Query 3 -- */
 /* -- Most useful reviews of a restaurant -- */
 function getTopReviews1(req, res) {
@@ -373,7 +358,6 @@ function getRecommendations(req, res) {
 // The exported functions, which can be accessed in index.js.
 module.exports = {
   getTopRestaurants: getTopRestaurants,
-  getTopRestaurantsUSA:getTopRestaurantsUSA,
   getTopReviews1: getTopReviews1,
   getSimilarUsers: getSimilarUsers,
   getTwoRestaurantDistance: getTwoRestaurantDistance,

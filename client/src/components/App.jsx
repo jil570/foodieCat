@@ -8,11 +8,15 @@ import Profile from './Profile';
 import Register from './Register';
 import EditInfo from './EditInfo';
 import HomePage from './HomePage';
+import HomeRest from './HomeRest';
 import FindRestaurant from './FindRest';
 import RecRestaurant from './RecRest';
 import RouteProtector from './RouteProtector';
 import RouteVerifier from './RouteVerifier';
 import RestResult from './RestResult';
+import Local from './Local';
+import LocalRest1 from './LocalRest1';
+import LocalRest2 from './LocalRest2';
 
 class App extends PureComponent {
   render() {
@@ -28,6 +32,10 @@ class App extends PureComponent {
           <Route exact path="/restaurant" component={RouteProtector(RecRestaurant)} />
           <Route exact path="/" component={RouteProtector(Profile)} />
           <Route exact path="/homepage" component={RouteProtector(HomePage)} />
+          <Route exact path="/homepage/result" component={RouteProtector(HomeRest)} />
+          <Route exact path="/local" component={RouteProtector(Local)} />
+          <Route exact path="/local/reviewresult" component={RouteProtector(LocalRest1)} />
+          <Route exact path="/local/topresult" component={RouteProtector(LocalRest2)} />
         </div>
       </Router>
     );
