@@ -326,7 +326,7 @@ function getRestaurant3(req, res) {
   SELECT business_id, text, stars, useful, RANK() OVER (PARTITION BY business_id ORDER BY useful) AS rnk
   FROM Reviews
   WHERE business_id in (SELECT business_id FROM distance))
-  SELECT name, address, city, state, d.stars AS avg_stars, text, distance
+  SELECT name, address, city, state, d.stars AS avg_stars, text, distance, d.business_id
   FROM distance d
   JOIN rnk r
   ON d.business_id = r.business_id
