@@ -1,11 +1,14 @@
 /* globals */
 
-import React, { Component } from 'react';
+import React, { Component} from 'react';
+import { Redirect } from 'react-router-dom';
 import { rgba } from 'polished';
 import '../stylesheets/auth-pages-style.css';
 import image from '../images/slide-5.jpg';
 import NavBar from './NavBar';
+import { getUser } from '../javascripts/userRequests';
 import RestComponent from './RestComponent';
+import RestResult from './RestResult';
 
 class FindRestaurant extends Component {
     constructor(props) {
@@ -26,6 +29,21 @@ class FindRestaurant extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
     };
+
+    componentDidMount() {
+        getUser()
+            .then((data) => {
+                data.json()
+                    .then((userInfo) => {
+                        this.setState({ 
+                            longitude: userInfo.longitude,
+                            latitude: userInfo.latitude});
+                        console.log(this.state);
+                    })
+                    .catch(() => { });
+            })
+            .catch(() => { });
+    }
 
     handleChangeStar(event) {
         this.setState({ min_star: event.target.value });
@@ -66,13 +84,14 @@ class FindRestaurant extends Component {
             }, err => {
                 console.log(err);
             }).then(restaurantList => {
-                let restaurantObj = restaurantList.map((rest, i) =>
-                    // console.log(rest.stars)
-                    <RestComponent restname={rest.name} categories={rest.categories} star={rest.stars} />
-                );
+                console.log(restaurantList);
+                // let restaurantObj = restaurantList.map((rest, i) =>
+                //     // console.log(rest.stars)
+                //     <RestComponent restname={rest.name} categories={rest.categories} star={rest.stars} />
+                // );
                 //This saves our HTML representation of the data into the state, which we can call in our render function
                 this.setState({
-                    restaurants: restaurantObj
+                    restaurants: restaurantList
                 });
             });
 
@@ -130,26 +149,16 @@ class FindRestaurant extends Component {
                             </fieldset>
                         </form>
                         <hr/>
-                        <div className="uk-flex uk-flex-center"><button class="uk-button uk-button-danger" onClick={this.handleSubmit} href="/findRestaurant/result">Search</button></div>
- 
+                        <div className="uk-flex uk-flex-center"><button class="uk-button uk-button-danger" onClick={this.handleSubmit}>Search</button></div>
+                            {this.state.restaurants.length > 0 &&
+                            <Redirect to={{
+                                pathname: '/findRestaurant/result',
+                                state: { results: this.state.restaurants }
+                            }} />}
                
             </div>
                 </div>
-                <div
-                    id="slideshow"
-                    className="uk-cover-container uk-background-secondary uk-flex uk-flex uk-flex-center uk-flex-middle uk-light uk-height-viewport uk-background-cover"
-                    data-uk-height-viewport="true"
-                    style={{ backgroundImage: `url(${image})` }}>
-                <div className="uk-border-rounded uk-width-3-4 uk-padding-large uk-position-z-index" uk-scrollspy="cls: uk-animation-fade" style={{ backgroundColor: rgba(0, 0, 0, 0.7) }}>
-                    <h2 className="uk-text-center uk-text-uppercase"><span>Top Restaurant Under Your Search</span></h2>
-                    <hr />
-                    <ul className="uk-list uk-list-large">
-                        {/* <RestComponent restname="test" categories="xxxxxxx" star="5" /> */}
-                        {this.state.restaurants}
-                    </ul>
-                </div>
-                </div>
-            </div>
+           </div>
         );
     }
 }

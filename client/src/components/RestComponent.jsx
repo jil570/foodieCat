@@ -1,5 +1,6 @@
 /* globals */
 import React, { Component } from 'react';
+import ReviewComponent from './ReviewComponent';
 
 
 class RestComponent extends Component {
@@ -28,7 +29,7 @@ class RestComponent extends Component {
     render() {
         return (
             <div>
-            <div className="uk-card uk-card-body">
+            <div>
                 <div className="uk-grid uk-margin-bottom">
                     <div className="uk-margin-right"><h5 className="uk-card-title">{this.props.restname}</h5></div>
                         <span uk-icon="star" className="uk-flex uk-flex-middle">Rating: {this.props.star}</span>
