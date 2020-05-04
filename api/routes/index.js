@@ -41,7 +41,7 @@ app.get('/restaurant/:stars/:category', routes.getRestaurant1); //good
 
 //Query 7
 //Get top 10 reviews at a restaurant since a given date
-app.get('/:restaurant/:date', routes.getTopReviews2); //not implemented yet
+app.get('/reviews/:restaurant/:date', routes.getTopReviews2); //not implemented yet
 
 //Query 8
 //Distance Between User and Restaurant

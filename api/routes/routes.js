@@ -249,7 +249,7 @@ function getTopLocal(req, res) {
   SELECT b.name, b.address, f.five_star_pct, b.review_count
   FROM Business b
   JOIN (
-  SELECT l.business_id, ROUND(SUM(CASE WHEN r.stars = 5 THEN 1 ELSE 0 END) / COUNT(r.review_id),2) as five_star_pct
+  SELECT l.business_id, ROUND(SUM(CASE WHEN r.stars = 5 THEN 1 ELSE 0 END)/COUNT(r.review_id)*100,2) as five_star_pct
   FROM local l
   JOIN Reviews r
   ON l.business_id = r.business_id
