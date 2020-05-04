@@ -76,7 +76,7 @@ class FindRestaurant extends Component {
             return;
         }
 
-        fetch("http://localhost:9000/restaurant/" + this.state.min_star + '/' + this.state.category1 + '/' + this.state.category2,
+        fetch("http://localhost:9000/restaurant/" + this.state.min_star + '/' + this.state.category1 + '/' + this.state.category2 + '/' + this.state.latitude + '/' + this.state.longitude,
             {
                 method: "GET"
             }).then(res => {
@@ -113,7 +113,7 @@ class FindRestaurant extends Component {
                         <form className="uk-form-stacked">
                             <fieldset className="uk-fieldset">
 
-                                <label class="uk-form-label" for="form-stacked-select"><h5>Choose the type of food! (by location)</h5></label>
+                                <label className="uk-form-label" htmlFor="form-stacked-select"><h5>Choose the type of food! (by location)</h5></label>
                                 <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                                     <label className="uk-margin-right"><input className="uk-radio" type="radio" name="radio2" value="Japanese" onClick={this.handleCategory1Change}/> Japanese</label>
                                     <label className="uk-margin-right"><input className="uk-radio" type="radio" name="radio2" value="Chinese" onClick={this.handleCategory1Change}/> Chinese</label>
@@ -124,7 +124,7 @@ class FindRestaurant extends Component {
                                 </div>
                                 <hr />
 
-                                <label class="uk-form-label" for="form-stacked-select"><h5>Choose the type of meal! (by time)</h5></label>
+                                <label className="uk-form-label" htmlFor="form-stacked-select"><h5>Choose the type of meal! (by time)</h5></label>
                                 <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                                     <label className="uk-width-2-5"><input className="uk-radio" type="radio" name="radio3" value="Breakfast" onClick={this.handleCategory2Change}/> Breakfast & Brunch</label>
                                     <label className="uk-width-2-5"><input className="uk-radio" type="radio" name="radio3" value="Lunch" onClick={this.handleCategory2Change}/> Lunch</label>
@@ -135,10 +135,10 @@ class FindRestaurant extends Component {
                                 </div>
                                 <hr />
 
-                                <label className="uk-form-label" for="form-stacked-select"><h5>Show restaurants with </h5></label>
+                                <label className="uk-form-label" htmlFor="form-stacked-select"><h5>Show restaurants with </h5></label>
                                 <div className="uk-margin">
-                                    <select class="uk-select uk-width-1-4" onChange={this.handleChangeStar}>
-                                        <option select value> -- select a number --</option>
+                                    <select className="uk-select uk-width-1-4" onChange={this.handleChangeStar}>
+                                        <option value> -- select a number --</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -149,7 +149,7 @@ class FindRestaurant extends Component {
                             </fieldset>
                         </form>
                         <hr/>
-                        <div className="uk-flex uk-flex-center"><button class="uk-button uk-button-danger" onClick={this.handleSubmit}>Search</button></div>
+                        <div className="uk-flex uk-flex-center"><button className="uk-button uk-button-danger" onClick={this.handleSubmit}>Search</button></div>
                             {this.state.restaurants.length > 0 &&
                             <Redirect to={{
                                 pathname: '/findRestaurant/result',
