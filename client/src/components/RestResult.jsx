@@ -7,17 +7,26 @@ import '../stylesheets/uikit.min.css';
 import image from '../images/slide-5.jpg';
 import NavBar from './NavBar';
 import RestComponent from './RestComponent';
+import ReviewComponent from './ReviewComponent';
 
 class RestResult extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            restaurants: []
+            restaurants: [],
+            category1: "",
+            category2: "",
+            min_star: 0
         };
-
+        
+        this.goBack = this.goBack.bind(this);
 
     };
+
+    goBack() {
+        this.props.history.goBack();
+    }
 
     componentDidMount() {
         let restaurantList = this.props.location.state.results;
@@ -34,25 +43,31 @@ class RestResult extends Component {
 
         restaurantList.forEach(function (item) {
             var existing = output.filter(function (v, i) {
-                return v.business_id == item.business_id;
+                return v.business_id === item.business_id;
             });
             if (existing.length) {
                 var existingIndex = output.indexOf(existing[0]);
                 output[existingIndex].text = output[existingIndex].text.concat(item.text);
+                output[existingIndex].useful = output[existingIndex].useful.concat(item.useful);
+                output[existingIndex].review_date = output[existingIndex].review_date.concat(item.review_date);
             } else {
                 if (typeof item.text == 'string')
                     item.text = [item.text];
+                if (typeof item.review_date == 'string')
+                    item.review_date = [item.review_date];
+                if (typeof item.useful == 'number')
+                    item.useful = [item.useful];
                 output.push(item);
             }
         });
 
-        console.log(output);
+        // console.log(output);
 
-        let restaurantObj = restaurantList.map((rest, i) =>
-            <RestComponent key={rest.business_id} restname={rest.name} text={rest.text} star={rest.avg_stars} address={rest.address} city={rest.city} state={rest.state} dist={rest.distance}/>);
-        this.setState({ restaurants: restaurantObj});
+        let restaurantObj = output.map((rest, i) =>
+            <RestComponent key={rest.business_id} restname={rest.name} texts={rest.text} star={rest.avg_stars} address={rest.address} city={rest.city} state={rest.state} dist={rest.distance} review_dates={rest.review_date} review_useful={rest.useful}/>);
+        this.setState({ restaurants: restaurantObj, category1: this.props.location.state.category1, category2: this.props.location.state.category2, min_star: this.props.location.state.min_star});
 
-        console.log(restaurantList);
+        // console.log(this.state);
     }
 
 
@@ -68,8 +83,9 @@ class RestResult extends Component {
                 >
                     
                     <div className="uk-border-rounded uk-width-3-4 uk-padding-large uk-position-z-index" uk-scrollspy="cls: uk-animation-fade" style={{ backgroundColor: rgba(0, 0, 0, 0.7) }}>
-                        <a href="/findRestaurant" class="uk-icon-link" uk-icon="arrow-left">Go Back to Search</a>
-                        <h2 className="uk-text-center uk-text-uppercase"><span>Top Restaurant Under Your Search</span></h2>
+                        <a href="/findRestaurant" className="uk-icon-link" uk-icon="arrow-left">Go Back to Search</a>
+                        <h2 className="uk-text-center uk-text-uppercase">Top Restaurant Under Your Search</h2>
+                        <h3 className="uk-text-center">{this.state.category2} with {this.state.category1} style above {this.state.min_star}</h3>
                         <hr />
                         <ul className="uk-list uk-list-large">
                             {this.state.restaurants}

@@ -15,6 +15,7 @@ class FindRestaurant extends Component {
         super(props);
 
         this.state = {
+            address:'',
             longitude:'',
             latitude:'',
             category1:'',
@@ -37,7 +38,8 @@ class FindRestaurant extends Component {
                     .then((userInfo) => {
                         this.setState({ 
                             longitude: userInfo.longitude,
-                            latitude: userInfo.latitude});
+                            latitude: userInfo.latitude,
+                            address: userInfo.street});
                         console.log(this.state);
                     })
                     .catch(() => { });
@@ -66,13 +68,20 @@ class FindRestaurant extends Component {
         const {
             category1,
             category2,
-            min_star
+            min_star,
+            address
         } = this.state;
 
         if (category1 === ""
             || category2 === ""
             || min_star === 0) {
             alert("Please fill in all the info.");
+            return;
+        }
+
+        if (typeof address == "undefined") {
+            var ask = window.confirm("You haven't set your address yet. \nClick OK to go to edit profile page to set your address.");
+            if(ask){window.location.href = "/editinfo"};
             return;
         }
 
@@ -85,17 +94,19 @@ class FindRestaurant extends Component {
             }, err => {
                 console.log(err);
             }).then(restaurantList => {
-                console.log(restaurantList);
+                // console.log(restaurantList);
                 // let restaurantObj = restaurantList.map((rest, i) =>
                 //     // console.log(rest.stars)
                 //     <RestComponent restname={rest.name} categories={rest.categories} star={rest.stars} />
                 // );
                 //This saves our HTML representation of the data into the state, which we can call in our render function
-                this.setState({
-                    restaurants: restaurantList
-                });
+                if (restaurantList.length === 0) {
+                    alert("We're sorry that there is no restaurant matching your choices :( \nPlease try another combination.")
+                } else {
+                    this.setState({
+                        restaurants: restaurantList
+                    });}
             });
-
     }
 
     render() {
@@ -154,7 +165,12 @@ class FindRestaurant extends Component {
                             {this.state.restaurants.length > 0 &&
                             <Redirect to={{
                                 pathname: '/findRestaurant/result',
-                                state: { results: this.state.restaurants }
+                                state: { 
+                                results: this.state.restaurants,
+                                category1: this.state.category1,
+                                category2: this.state.category2,
+                                min_star: this.state.min_star 
+                                }
                             }} />}
                
             </div>
