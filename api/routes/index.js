@@ -63,6 +63,10 @@ app.get('/restaurant/:stars/:category1/:category2', routes.getRestaurant2);
 // returns restaurant name, avg stars, review text, and distance for user location
 app.get('/restaurant/:stars/:category1/:category2/:latitude/:longitude', routes.getRestaurant3);
 
+//Query 13
+// returns recommendations for two users
+app.get('/recommendations/:latitude/:longitude/:category1/:category2', routes.getRecommendations);
+
 // app.listen(8081, () => {
 // 	console.log(`Server listening on PORT 8081`);
 // });

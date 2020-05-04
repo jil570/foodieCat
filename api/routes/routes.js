@@ -328,6 +328,34 @@ function getRestaurant3(req, res) {
   });
 }
 
+/* --Query 13-- */
+// recommend restaurants for two users
+function getRecommendations(req, res) {
+  var latitude = parseFloat(req.params.latitude);
+  var longitude = parseFloat(req.params.longitude);
+  var category1 = '%' + req.params.category1 + '%'; // user1's preference 1
+  var category2 = '%' + req.params.category2 + '%'; // user2's preference 1
+
+  var query = `
+  SELECT name, stars, address, city, state, 
+  ROUND((6371 * acos(cos(radians(latitude))  
+      * cos(radians(${latitude})) 
+      * cos(radians(${longitude}) - radians(longitude)) + sin(radians(latitude)) 
+      * sin(radians(${latitude})))),2) 
+  AS distance
+  FROM Business
+  WHERE categories LIKE '%Restaurants%' AND (categories LIKE '${category1}' OR categories LIKE '${category2}')
+  ORDER BY stars DESC, distance
+  LIMIT 10;`;
+
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      res.json(rows);
+    }
+  });
+}
+
 // The exported functions, which can be accessed in index.js.
 module.exports = {
   getTopRestaurants: getTopRestaurants,
@@ -340,7 +368,8 @@ module.exports = {
   getLocalReviews: getLocalReviews,
   getTopLocal: getTopLocal,
   getRestaurant2: getRestaurant2,
-  getRestaurant3: getRestaurant3
+  getRestaurant3: getRestaurant3,
+  getRecommendations: getRecommendations
 }
 
 
