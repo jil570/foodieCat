@@ -20,7 +20,8 @@ class Register extends Component {
       category1: 'unset',
       category2:'unset',
       longitude:'unset',
-      latitude:'unset'
+      latitude:'unset',
+      privary:'open',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -53,6 +54,7 @@ class Register extends Component {
     const { category2 } = this.state;
     const { longitude } = this.state;
     const { latitude } = this.state;
+    const { privary } = this.state;
 
     register(
       firstName,
@@ -65,7 +67,8 @@ class Register extends Component {
       category1,
       category2,
       longitude,
-      latitude
+      latitude,
+      privary,
     )
       .then((res) => {
         if (res.ok) {
