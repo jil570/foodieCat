@@ -14,8 +14,7 @@ class HomePage extends Component {
       category: '',
       cities: ['Las Vegas', 'Phoenix', 'Pittsburgh', 'Madison', 'Champaign', 'Charlotte'],
       categories: ['Japanese', 'Chinese', 'Mexican', 'Italian', 'Ice Cream & Frozen Yogurt', 'Fast Food'],
-      restaurants: [],
-      result_header:<div></div>
+      restaurants: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -53,26 +52,14 @@ class HomePage extends Component {
       console.log(err);
     }).then( restaurantList => {
       if (!restaurantList) return;
-
-      let restaurantDivs = restaurantList.map((restaurantObj, i) =>
-        <tr>
-          <td>{restaurantObj.name}</td>
-          <td>{restaurantObj.stars}</td>
-          <td>{restaurantObj.review_count}</td>
-        </tr>
-      );
       this.setState({
-        restaurants: restaurantDivs,
-        result_header:
-          <div className="uk-text-lead uk-text-center serif" style={{ color: rgba(52, 73, 94 , 1) }}>
-          Top {this.state.category} Restaurants in {this.state.city}
-          </div>
+          restaurants: restaurantList
       });
     }, err => {
       console.log(err);
     });
   }
-
+  
   render() {
     const { cities, categories} = this.state;
     const cityButtons = [];
@@ -108,8 +95,8 @@ class HomePage extends Component {
           >
             <div className="uk-border-rounded uk-flex-center uk-flex-middle uk-padding-large" style={{ backgroundColor: rgba(0, 0, 0, 0.6) }}>
               <p className="uk-flex uk-flex-middle">
-              <div className="uk-inline uk-flex-first uk-align-center uk-heading-large uk-text-center serif" style={{ color: rgba(255, 213, 79, 1) }}>
-                foodieCat
+              <div className="uk-inline uk-flex-first uk-align-center uk-heading-large uk-text-center" style={{ color: rgba(255, 213, 79, 1) }}>
+                <div className="serif">foodieCat</div>
               </div>
               <div className="uk-inline responsive uk-width-1-4@m uk-height-1-5@m uk-flex-last">
                   <img src={logo} alt="Logo" width="200" height="200"/>
@@ -143,15 +130,16 @@ class HomePage extends Component {
                   </div>
                   <br></br><br></br>
                   <div>
-                    <input href="/homepage/result" type="submit" className="button-primary uk-button-large uk-text-large" value="Get Top Restaurants ->" />
+                    <input type="submit" className="uk-button-danger uk-button-large uk-text-large" value="Get Top Restaurants ->" />
                   </div>
                   {this.state.restaurants.length > 0 &&
                     <Redirect to={{
                         pathname: '/homepage/result',
                         state: {
-                          result_header: this.state.result_header,
-                          restaurants: this.state.restaurants
-                        }
+                          results: this.state.restaurants,
+                          city: this.state.city,
+                          category: this.state.category
+                         }
                     }} />}
                   </fieldset>
                 </form>

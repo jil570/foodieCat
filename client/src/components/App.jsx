@@ -28,8 +28,8 @@ class App extends PureComponent {
           <Route exact path="/findrestaurant/result" component={RouteProtector(RestResult)} />
           <Route exact path="/restaurant" component={RouteProtector(RecRestaurant)} />
           <Route exact path="/" component={RouteProtector(Profile)} />
-          <Route exact path="/homepage" component={RouteVerifier(HomePage)} />
-          <Route exact path="/homepage/result" component={RouteVerifier(HomeRest)} />
+          <Route exact path="/homepage" component={RouteProtector(HomePage)} />
+          <Route exact path="/homepage/result" component={RouteProtector(HomeRest)} />
         </div>
       </Router>
     );

@@ -358,7 +358,6 @@ function getRecommendations(req, res) {
 // The exported functions, which can be accessed in index.js.
 module.exports = {
   getTopRestaurants: getTopRestaurants,
-  getTopRestaurantsUSA:getTopRestaurantsUSA,
   getTopReviews1: getTopReviews1,
   getSimilarUsers: getSimilarUsers,
   getTwoRestaurantDistance: getTwoRestaurantDistance,
