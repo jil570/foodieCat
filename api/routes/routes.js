@@ -29,21 +29,6 @@ function getTopRestaurants(req, res) {
   });
 };
 
-function getTopRestaurantsUSA(req, res) {
-  var query = `
-  SELECT name, stars, review_count
-  FROM Business
-  WHERE categories LIKE '%Restaurants%'
-  ORDER BY stars DESC, review_count DESC
-  LIMIT 10;`;
-  connection.query(query, function(err, rows, fields) {
-    if (err) console.log(err);
-    else {
-      res.json(rows);
-    }
-  });
-};
-
 /* -- Query 3 -- */
 /* -- Most useful reviews of a restaurant -- */
 function getTopReviews1(req, res) {
@@ -233,13 +218,17 @@ function getLocalReviews(req, res) {
   ORDER BY max_use DESC, stars DESC) mm
   ON r.business_id = mm.business_id AND r.stars = mm.stars AND r.useful = mm.max_use
   WHERE r.stars = 1 or r.stars = 5
-  ORDER BY business_id)
-  SELECT c.name, c.avg_stars, m.useful, m.stars, m.text
+  ORDER BY business_id),
+  final AS (
+  SELECT c.name, c.avg_stars, m.useful, m.stars, m.text, ROW_NUMBER() OVER (PARTITION BY c.name ORDER BY m.useful DESC) rn
   FROM chain c
   JOIN max_useful m
   ON c.name = m.name 
   ORDER BY c.avg_stars DESC, c.name ASC, m.stars DESC
-  LIMIT 20;
+  LIMIT 20)
+  SELECT name, avg_stars, useful, stars, text
+  FROM final
+  WHERE rn = 1
 `;
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
@@ -413,7 +402,6 @@ function getRestaurant4(req, res) {
 // The exported functions, which can be accessed in index.js.
 module.exports = {
   getTopRestaurants: getTopRestaurants,
-  getTopRestaurantsUSA:getTopRestaurantsUSA,
   getTopReviews1: getTopReviews1,
   getSimilarUsers: getSimilarUsers,
   getTwoRestaurantDistance: getTwoRestaurantDistance,

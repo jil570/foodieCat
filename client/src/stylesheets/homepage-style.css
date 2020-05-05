@@ -1,17 +1,25 @@
 /* button */
 .button-primary {
-  background-color: #e68a00;
-  color: #ffffff;
+  background-color: #1e87f0;
+  color: #fff;
+  border: 1px solid transparent;
 }
+/* Hover + Focus */
 .button-primary:hover,
 .button-primary:focus {
-  background-color:#08a9d1 ;
-  color: #ffffff;
+  background-color: #0f7ae5;
+  color: #fff;
 }
+/* OnClick + Active */
 .button-primary:active,
 .button-primary.uk-active {
-  background-color: #3690b9c4;
-  color: #ffffff;
+  background-color: #0e6dcd;
+  color: #fff;
+}
+
+/* fixed background */
+.fixed {
+  background-attachment: fixed;
 }
 
 /* logo */

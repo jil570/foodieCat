@@ -30,8 +30,8 @@ class NavBar extends PureComponent {
                   </a>
                 </li>
                 <li>
-                  <a className="tooltip" href="/like" data-uk-icon="icon:heart">
-                      <span className="tooltiptext">Likes</span>
+                  <a className="tooltip" href="/local" data-uk-icon="icon:heart">
+                      <span className="tooltiptext">Local Restaurant</span>
                   </a>
                 </li>
                 <li>
