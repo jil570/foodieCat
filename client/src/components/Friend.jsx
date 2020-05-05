@@ -88,7 +88,7 @@ class Friend extends Component {
     var by = Math.cos(lat2) * Math.sin(lng - lng1)
     var lat3 = Math.atan2(Math.sin(lat1) + Math.sin(lat2), Math.sqrt((Math.cos(lat1) + bx) * (Math.cos(lat1) + bx) + Math.pow(by, 2)));
     var lon3 = lng1 + Math.atan2(by, Math.cos(lat1) + bx);
-    return [Math.round(Math.degrees(lat3), 5), Math.round(Math.degrees(lon3), 5)]
+    return [Math.degrees(lat3), Math.degrees(lon3)]
 }
 
   handleFollow(event) {
@@ -100,9 +100,9 @@ class Friend extends Component {
     const latitude = event.target.getAttribute('lat');
     const person2_cat1 = event.target.getAttribute('cat1'); 
 
-    const midpoint_arr = this.middlePoint(currentUser.latitude, currentUser.latitude, latitude, longitude);
+    const midpoint_arr = this.middlePoint(currentUser.latitude, currentUser.longitude, latitude, longitude);
 
-    fetch("http://localhost:9000/recommendations/" + midpoint_arr[1] + '/' + midpoint_arr[0] + '/' + currentUser.category1 + '/' + person2_cat1,
+    fetch("http://localhost:9000/recommendations/" + midpoint_arr[0] + '/' + midpoint_arr[1] + '/' + currentUser.category1 + '/' + person2_cat1,
     {
         method: "GET"
     }).then(res => {
