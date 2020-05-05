@@ -12,6 +12,7 @@ class EditInfo extends Component {
       street: '',
       city:'',
       state:'',
+      status:'',
       category1: '' ,
       category2: '',
       longitude:'unset',

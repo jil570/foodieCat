@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import image from '../images/slide-5.jpg';
+import image from '../images/slide-2.jpg';
 import { rgba } from 'polished';
 import '../stylesheets/homepage-style.css';
 import NavBar from './NavBar';

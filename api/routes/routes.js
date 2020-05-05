@@ -357,8 +357,8 @@ function getRecommendations(req, res) {
       * sin(radians(${latitude})))),2) 
   AS distance
   FROM Business
-  WHERE categories LIKE '%Restaurants%' AND (categories LIKE '${category1}' OR categories LIKE '${category2}')
-  ORDER BY stars DESC, distance
+  WHERE categories LIKE '%Restaurants%' AND (categories LIKE '${category1}' OR categories LIKE '${category2}') AND stars >= 3
+  ORDER BY distance, stars DESC
   LIMIT 10;`;
 
   connection.query(query, function(err, rows, fields) {

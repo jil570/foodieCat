@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import image from '../images/slide-5.jpg';
+import image from '../images/slide-2.jpg';
 import { rgba } from 'polished';
 import '../stylesheets/homepage-style.css';
 import LocalComp1 from './LocalComp1';
