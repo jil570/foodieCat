@@ -121,7 +121,7 @@ class RecRestaurant extends Component {
         let filterCat1 = allCat1.filter(rest=> rest.avg_stars >= filter);
         let filterCat2 = allCat2.filter(rest =>rest.avg_stars >= filter);
         console.log(filterCat1);
-        console.log(filterCat2);
+        // console.log(filterCat2);
 
         var output1 = [];
         filterCat1.forEach(function (item) {
