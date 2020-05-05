@@ -244,22 +244,32 @@ function getLocalReviews(req, res) {
 function getTopLocal(req, res) {
   var city = req.params.city;
 
-  var query = `
-  WITH local as (SELECT business_id, COUNT(*)  
+  // var query = `
+  // WITH local as (SELECT business_id, COUNT(*)  
+  // FROM Business 
+  // WHERE city = '${city}' AND categories LIKE '%Restaurants%'
+  // GROUP BY business_id
+  // HAVING COUNT(*) = 1)
+  // SELECT b.name, b.address, f.five_star_pct, b.review_count
+  // FROM Business b
+  // JOIN (
+  // SELECT l.business_id, ROUND(SUM(CASE WHEN r.stars = 5 THEN 1 ELSE 0 END)/COUNT(r.review_id)*100,2) as five_star_pct
+  // FROM local l
+  // JOIN Reviews r
+  // ON l.business_id = r.business_id
+  // GROUP BY l.business_id) f
+  // ON b.business_id = f.business_id
+  // ORDER BY f.five_star_pct DESC, b.review_count DESC
+  // LIMIT 10;
+  // `;
+
+  var query =  `
+  SELECT name, stars as avg_stars, categories
   FROM Business 
-  WHERE city = '${city}' AND categories LIKE '%Restaurants%'
-  GROUP BY business_id
-  HAVING COUNT(*) = 1)
-  SELECT b.name, b.address, f.five_star_pct, b.review_count
-  FROM Business b
-  JOIN (
-  SELECT l.business_id, ROUND(SUM(CASE WHEN r.stars = 5 THEN 1 ELSE 0 END)/COUNT(r.review_id)*100,2) as five_star_pct
-  FROM local l
-  JOIN Reviews r
-  ON l.business_id = r.business_id
-  GROUP BY l.business_id) f
-  ON b.business_id = f.business_id
-  ORDER BY f.five_star_pct DESC, b.review_count DESC
+  WHERE city = 'Las Vegas' AND categories LIKE '%Restaurants%'
+  GROUP BY name
+  HAVING COUNT(business_id) = 1
+  ORDER BY avg_stars DESC, review_count DESC
   LIMIT 10;
   `;
   connection.query(query, function(err, rows, fields) {
