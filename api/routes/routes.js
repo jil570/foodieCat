@@ -265,7 +265,7 @@ function getTopLocal(req, res) {
   var query =  `
   SELECT name, stars as avg_stars, categories
   FROM Business 
-  WHERE city = 'Las Vegas' AND categories LIKE '%Restaurants%'
+  WHERE city = '${city}' AND categories LIKE '%Restaurants%'
   GROUP BY name
   HAVING COUNT(business_id) = 1
   ORDER BY avg_stars DESC, review_count DESC
