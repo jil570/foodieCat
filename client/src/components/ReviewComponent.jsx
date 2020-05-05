@@ -19,9 +19,13 @@ class ReviewComponent extends Component {
 
     componentDidMount(){
         if (this.props.text.length > 300){
-            const unwraptext = this.props.text.slice(0,300);
-            const wraptext = this.props.text.slice(300,);
+            const unwraptext = this.props.text.slice(0,300)+"...";
+            const wraptext = this.props.text;
             this.setState({active: true, unwrap: unwraptext, wrap: wraptext});
+        }else{
+            const unwraptext = this.props.text;
+            const wraptext = this.props.text;
+            this.setState({ active: false, unwrap: unwraptext, wrap: wraptext });
         }
     }
 
@@ -42,7 +46,8 @@ class ReviewComponent extends Component {
                 <article className="uk-comment uk-visible-toggle" tabIndex="-1">
                     <div className="uk-comment-body">
                         <p className="uk-comment-meta uk-margin-remove">{this.props.useful} people found useful</p>
-                        {this.state.active ? <p>{this.state.unwrap}</p> : (<p>{this.state.unwrap}{this.state.wrap}</p>)}
+                        {this.state.active ? <p>{this.state.unwrap}</p> : (<p>{this.state.wrap}</p>)}
+                        {/* {this.state.active ? <p>{this.state.unwrap}</p> : (<p>{this.state.unwrap}{this.state.wrap}</p>)} */}
                         <a className="uk-text-small uk-flex uk-flex-right" onClick={this.toggleClass}><u>{this.state.text}</u></a>
                     </div>
                     <header className="uk-comment-header uk-flex uk-flex-right uk-margin-remove">
