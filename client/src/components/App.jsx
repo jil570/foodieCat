@@ -32,7 +32,7 @@ class App extends PureComponent {
           <Route exact path="/findrestaurant" component={RouteProtector(FindRestaurant)} />
           <Route exact path="/findrestaurant/result" component={RouteProtector(RestResult)} />
           <Route exact path="/restaurant" component={RouteProtector(RecRestaurant)} />
-          <Route exact path="/" component={RouteProtector(Profile)} />
+          <Route exact path="/" component={RouteProtector(HomePage)} />
           <Route exact path="/homepage" component={RouteProtector(HomePage)} />
           <Route exact path="/homepage/result" component={RouteProtector(HomeRest)} />
           <Route exact path="/local" component={RouteProtector(Local)} />

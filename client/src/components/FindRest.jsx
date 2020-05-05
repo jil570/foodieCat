@@ -4,7 +4,7 @@ import React, { Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import { rgba } from 'polished';
 import '../stylesheets/auth-pages-style.css';
-import image from '../images/slide-5.jpg';
+import image from '../images/slide-3.jpg';
 import NavBar from './NavBar';
 import { getUser } from '../javascripts/userRequests';
 import RestComponent from './RestComponent';

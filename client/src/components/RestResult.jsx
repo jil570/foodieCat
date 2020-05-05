@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { rgba } from 'polished';
 import '../stylesheets/auth-pages-style.css';
 import '../stylesheets/uikit.min.css';
-import image from '../images/slide-5.jpg';
+import image from '../images/slide-3.jpg';
 import NavBar from './NavBar';
 import RestComponent from './RestComponent';
 import ReviewComponent from './ReviewComponent';
@@ -85,7 +85,7 @@ class RestResult extends Component {
                     <div className="uk-border-rounded uk-width-3-4 uk-padding-large uk-position-z-index" uk-scrollspy="cls: uk-animation-fade" style={{ backgroundColor: rgba(0, 0, 0, 0.7) }}>
                         <a href="/findRestaurant" className="uk-icon-link" uk-icon="arrow-left">Go Back to Search</a>
                         <h2 className="uk-text-center uk-text-uppercase">Top Restaurant Under Your Search</h2>
-                        <h3 className="uk-text-center">{this.state.category2} with {this.state.category1} style above {this.state.min_star}</h3>
+                        <h3 className="uk-text-center">{this.state.category2} with {this.state.category1} style above {this.state.min_star} stars</h3>
                         <hr />
                         <ul className="uk-list uk-list-large">
                             {this.state.restaurants}
