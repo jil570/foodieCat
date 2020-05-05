@@ -9,6 +9,8 @@ import Register from './Register';
 import EditInfo from './EditInfo';
 import HomePage from './HomePage';
 import HomeRest from './HomeRest';
+import Friend from './Friend';
+import FriendResult from './FriendResult';
 import FindRestaurant from './FindRest';
 import RecRestaurant from './RecRest';
 import RouteProtector from './RouteProtector';
@@ -36,6 +38,8 @@ class App extends PureComponent {
           <Route exact path="/local" component={RouteProtector(Local)} />
           <Route exact path="/local/reviewresult" component={RouteProtector(LocalRest1)} />
           <Route exact path="/local/topresult" component={RouteProtector(LocalRest2)} />
+          <Route exact path="/friend" component={RouteProtector(Friend)} />
+          <Route exact path="/friend/result" component={RouteProtector(FriendResult)} />
         </div>
       </Router>
     );

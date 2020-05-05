@@ -11,12 +11,14 @@ class Profile extends Component {
     this.state = {
       data: null,
       isLoading: true,
+      mid_long: null,
+      mid_lat: null,
     };
   }
 
   componentDidMount() {
     getUser()
-      .then((data) => {
+      .then((data) => { 
         data.json()
           .then((userInfo) => {
             this.setState({ data: userInfo, isLoading: false });

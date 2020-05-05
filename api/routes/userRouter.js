@@ -79,6 +79,27 @@ router.get('/getOtherUser/:username', checkAuthenticated, (req, res) => {
     .catch((err) => sendDatabaseErrorResponse(err, res));
 });
 
+router.get('/getSuggestedUsers', checkAuthenticated, async (req, res) => {
+  const { username } = req.user;
+
+  const suggestedUsers = new Set();
+
+  const user = await User.findOne({ username });
+
+  if (!user) {
+    res.status(550).json(`[!] Could not find user: ${username}`);
+  }
+
+  // Get all users whose status is open
+  const allUsers = await User.find({ status: "open" })
+    .catch((err) => sendDatabaseErrorResponse(err, res));
+
+  // Send the list of suggestions.
+  res.status(200);
+  res.send(Array.from(allUsers));
+});
+
+
 router.post('/profile', checkAuthenticated, async (req, res) => {
       const { username } = req.user;
       const { street } = req.body;
