@@ -18,7 +18,7 @@ class LocalRest2 extends Component {
     componentDidMount() {
         let localList = this.props.location.state.locals;
         let localDivs = localList.map((localObj, i) =>
-            <LocalComp2 key={i} restname={localObj.name} address={localObj.address} five_star_pct={localObj.five_star_pct} review_count={localObj.review_count} />
+            <LocalComp2 key={i} restname={localObj.name} address={localObj.address} avg_stars={localObj.avg_stars} categories={localObj.categories} review_count={localObj.review_count} />
         );
         this.setState({ locals: localDivs});
     }

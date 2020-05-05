@@ -263,7 +263,7 @@ function getTopLocal(req, res) {
   // `;
 
   var query =  `
-  SELECT name, stars as avg_stars, categories
+  SELECT name, address, stars as avg_stars, categories, review_count
   FROM Business 
   WHERE city = '${city}' AND categories LIKE '%Restaurants%'
   GROUP BY name
