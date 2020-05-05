@@ -40,14 +40,14 @@ class ReviewComponent extends Component {
         return (
             <tr>
                 <article className="uk-comment uk-visible-toggle" tabIndex="-1">
-                    <div className="uk-comment-body uk-margin-top">
-                        <p className="uk-comment-meta uk-margin-remove-bottom">{this.props.useful} people found useful</p>
+                    <div className="uk-comment-body">
+                        <p className="uk-comment-meta uk-margin-remove">{this.props.useful} people found useful</p>
                         {this.state.active ? <p>{this.state.unwrap}</p> : (<p>{this.state.unwrap}{this.state.wrap}</p>)}
                         <a className="uk-text-small uk-flex uk-flex-right" onClick={this.toggleClass}><u>{this.state.text}</u></a>
                     </div>
-                    <header className="uk-comment-header uk-flex uk-flex-right uk-margin-top">
+                    <header className="uk-comment-header uk-flex uk-flex-right uk-margin-remove">
                         <div className="uk-width-auto">
-                            <p className="uk-comment-meta uk-margin-remove-top">Posted on {this.props.date}</p>
+                            <p className="uk-comment-meta uk-margin-remove">Posted on {this.props.date}</p>
                         </div>
                     </header>                       
                 </article>
