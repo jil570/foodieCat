@@ -11,12 +11,14 @@ class Profile extends Component {
     this.state = {
       data: null,
       isLoading: true,
+      mid_long: null,
+      mid_lat: null,
     };
   }
 
   componentDidMount() {
     getUser()
-      .then((data) => {
+      .then((data) => { 
         data.json()
           .then((userInfo) => {
             this.setState({ data: userInfo, isLoading: false });
@@ -82,7 +84,7 @@ class Profile extends Component {
               <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> {data.username} has a hearty appetite for <a>{data.category1}</a>, <a>{data.category2}</a> food</h2>
             </div>
             <div className="uk-flex uk-margin-small-bottom uk-flex-row uk-flex-middle">
-              <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> {data.username} 's current coordinate is (lat:<a>{data.latitude}</a>, lng:<a>{data.longitude}</a>) </h2>
+              <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> {data.username} 's current coordinate is (lat:<a>{parseFloat(data.latitude).toFixed(5)}</a>, lng:<a>{parseFloat(data.longitude).toFixed(5)}</a>) </h2>
             </div>
             <div className="uk-flex uk-margin-small-bottom uk-flex-row uk-flex-middle">
               <h2 id="username" className="uk-text-light uk-margin-remove uk-heading-xsmall"> {data.username} 's current profile status is <a>{data.status}</a>. </h2>

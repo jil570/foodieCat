@@ -21,17 +21,17 @@ class NavBar extends PureComponent {
                 </li>
                 <li>
                   <a className="tooltip" href="/findrestaurant" data-uk-icon="icon:search">
-                    <span className="tooltiptext">Find Restaurant</span>
+                    <span className="tooltiptext">Find</span>
                   </a>
                 </li>
                 <li>
                   <a className="tooltip" href="/restaurant" data-uk-icon="icon:location">
-                    <span className="tooltiptext">Restaurant</span>
+                    <span className="tooltiptext">Recommend</span>
                   </a>
                 </li>
                 <li>
                   <a className="tooltip" href="/local" data-uk-icon="icon:heart">
-                      <span className="tooltiptext">Local Restaurant</span>
+                      <span className="tooltiptext">Local</span>
                   </a>
                 </li>
                 <li>
