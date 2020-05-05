@@ -53,7 +53,11 @@ class Local extends Component {
         }, err => {
             console.log(err);
         }).then( reviewList => {
-            if (!reviewList) return;
+            console.log(reviewList);
+            if (reviewList.length===0) {
+                alert("Sorry, result is empty :(");
+                return;
+            }
             this.setState({
                 reviews: reviewList
             });
@@ -82,7 +86,11 @@ class Local extends Component {
         }, err => {
             console.log(err);
         }).then( localList => {
-            if (!localList) return;
+            if (!localList) {
+                alert("Sorry, result is empty :(");
+                // console.log("hhhhhhh");
+                return;
+            }
             this.setState({
                 locals: localList
             });
