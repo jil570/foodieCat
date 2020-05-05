@@ -123,12 +123,12 @@ class FindRestaurant extends Component {
                 style={{ backgroundImage: `url(${image})` }}
             >
                     <div className="uk-border-rounded uk-width-3-4 uk-padding-large uk-position-z-index" uk-scrollspy="cls: uk-animation-fade" style={{ backgroundColor: rgba(0, 0, 0, 0.7)}}>
-                        <h2 className="uk-text-center uk-text-uppercase"><span>Find a New Restaurant</span></h2>
+                        <h2 className="uk-text-center uk-text-uppercase"><span>Find a Restaurant</span></h2>
                         <hr />
                         <form className="uk-form-stacked">
                             <fieldset className="uk-fieldset">
 
-                                <label className="uk-form-label" htmlFor="form-stacked-select"><h5>Choose the type of food! (by location)</h5></label>
+                                <label className="uk-form-label" htmlFor="form-stacked-select"><h5>Choose the type of food! (by style)</h5></label>
                                 <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                                     <label className="uk-margin-right"><input className="uk-radio" type="radio" name="radio2" value="Japanese" onClick={this.handleCategory1Change}/> Japanese</label>
                                     <label className="uk-margin-right"><input className="uk-radio" type="radio" name="radio2" value="Chinese" onClick={this.handleCategory1Change}/> Chinese</label>
@@ -139,11 +139,9 @@ class FindRestaurant extends Component {
                                 </div>
                                 <hr />
 
-                                <label className="uk-form-label" htmlFor="form-stacked-select"><h5>Choose the type of meal! (by time)</h5></label>
+                                <label className="uk-form-label" htmlFor="form-stacked-select"><h5>Give us more details!</h5></label>
                                 <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                                     <label className="uk-width-2-5"><input className="uk-radio" type="radio" name="radio3" value="Breakfast" onClick={this.handleCategory2Change}/> Breakfast & Brunch</label>
-                                    <label className="uk-width-2-5"><input className="uk-radio" type="radio" name="radio3" value="Lunch" onClick={this.handleCategory2Change}/> Lunch</label>
-                                    <label className="uk-width-2-5"><input className="uk-radio" type="radio" name="radio3" value="Dinner" onClick={this.handleCategory2Change}/> Dinner</label>
                                     <label className="uk-width-2-5"><input className="uk-radio" type="radio" name="radio3" value="Fast Food" onClick={this.handleCategory2Change}/> Fast Food</label>
                                     <label className="uk-width-2-5"><input className="uk-radio" type="radio" name="radio3" value="Diner" onClick={this.handleCategory2Change}/> Diner</label>
                                     <label className="uk-width-3-5"><input className="uk-radio" type="radio" name="radio3" value="Ice Cream & Frozen Yogurt" onClick={this.handleCategory2Change}/> Ice Cream & Frozen Yogurt</label>
