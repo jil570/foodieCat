@@ -66,10 +66,13 @@ class FindRestaurant extends Component {
         event.preventDefault();
 
         const {
+            address,
+            longitude,
+            latitude,
             category1,
             category2,
             min_star,
-            address
+            restaurants
         } = this.state;
 
         if (category1 === ""
@@ -79,7 +82,7 @@ class FindRestaurant extends Component {
             return;
         }
 
-        if (typeof address == "undefined") {
+        if (longitude === "unset") {
             var ask = window.confirm("You haven't set your address yet. \nClick OK to go to edit profile page to set your address.");
             if(ask){window.location.href = "/editinfo"};
             return;
