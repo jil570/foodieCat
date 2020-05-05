@@ -67,6 +67,10 @@ app.get('/restaurant/:stars/:category1/:category2/:latitude/:longitude', routes.
 // returns recommendations for two users
 app.get('/recommendations/:latitude/:longitude/:category1/:category2', routes.getRecommendations);
 
+//Query 14
+//Restaurant recommendations
+app.get('/restaurant/recommend/:latitude/:longitude/:category1', routes.getRestaurant4);
+
 // app.listen(8081, () => {
 // 	console.log(`Server listening on PORT 8081`);
 // });
