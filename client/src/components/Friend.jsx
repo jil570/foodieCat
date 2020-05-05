@@ -5,7 +5,6 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
 import { getSuggestedUsers, getUser } from '../javascripts/userRequests';
-import { follow } from '../javascripts/followRequests';
 import image from '../images/slide-3.jpg';
 import { rgba } from 'polished';
 import { Redirect } from 'react-router-dom';

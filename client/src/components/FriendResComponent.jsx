@@ -29,7 +29,7 @@ class RestComponent extends Component {
                     <div className="uk-margin-right"><h5 className="uk-card-title">{this.props.restname}</h5></div>
                         <span uk-icon="star" className="uk-flex uk-flex-middle">Rating: {this.props.star}</span>
                         <span uk-icon="location" className="uk-flex uk-flex-middle uk-width-1">Location: {this.props.address}, {this.props.city}, {this.props.state}</span>
-                        <span className="uk-flex uk-flex-middle uk-width-1">{this.props.distance} km away from you</span>
+                        <span className="uk-flex uk-flex-middle uk-width-1">{this.props.distance} KM away from you</span>
                 </div>
                 {this.state.active ? (
                         <table className="uk-table uk-table-divider">
