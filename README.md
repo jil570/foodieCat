@@ -1,6 +1,9 @@
-# Instructions
+# foodieCat
+foodieCat is built on a dataset from Yelp, intended to help users find top restaurants, local restaurants, check restaurants’ reviews, and search for friends with a similar interest in food.
 
-To install the app locally
+# This page introduces the login page for our APP.
+
+# To install the app locally
 1. cd api
 2. npm install
 3. npm audit fix
@@ -11,7 +14,7 @@ To install the app locally
 7. npm audit fix
 
 
-To run the app locally, follow these steps:
+# To run the app locally, follow these steps:
 
 1. Open a command prompt in the "api" folder
 2. Run the command ```npm start```
