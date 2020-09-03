@@ -1,0 +1,64 @@
+/* button */
+.button-primary {
+  background-color: #1e87f0;
+  color: #fff;
+  border: 1px solid transparent;
+}
+/* Hover + Focus */
+.button-primary:hover,
+.button-primary:focus {
+  background-color: #0f7ae5;
+  color: #fff;
+}
+/* OnClick + Active */
+.button-primary:active,
+.button-primary.uk-active {
+  background-color: #0e6dcd;
+  color: #fff;
+}
+
+/* fixed background */
+.fixed {
+  background-attachment: fixed;
+}
+
+/* logo */
+.responsive {
+  position: relative; 
+  display: inline-block;
+}
+
+/* titles */
+.serif {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.sansserif {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.monospace {
+  font-family: "Lucida Console", Courier, monospace;
+}
+
+.header {
+    flex: 1 0 50%;
+    color: orange;
+}
+  
+.restaurants-container .restaurants-header, .results-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 40px;
+}
+
+.restaurants-header .header{
+    flex: 1 0 25%;
+}
+
+/* table */
+.center {
+  margin-left:auto; 
+  margin-right:auto;
+}
